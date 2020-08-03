@@ -1,0 +1,42 @@
+/**
+ * This module generates the color palette seen in ./colors.json
+ *
+ * In debug mode, go to http://localhost:3000/debug/development/color-reference to get
+ * the JSON output for ./colors.json
+ */
+@use 'sass:color';
+@use 'sass:map';
+
+$light: #f8f3d4;
+$dark: color.invert($light);
+$colors: (
+  "primary": #00b8a9,
+  "error": #f6416c,
+  "info": #ffde7d,
+  "blue": #00b8a9,
+);
+
+$mixMaxValue: 85%;
+@each $key, $value in $colors {
+  $color-shades: (
+    #{$key}: #{$value},
+    #{$key}-1: mix($light, $value, $mixMaxValue),
+    #{$key}-2: mix($light, $value, $mixMaxValue * 0.75),
+    #{$key}-3: mix($light, $value, $mixMaxValue * 0.5),
+    #{$key}-4: mix($light, $value, $mixMaxValue * 0.25),
+    #{$key}-5: #{$value},
+    #{$key}-6: mix($dark, $value, $mixMaxValue * 0.25),
+    #{$key}-7: mix($dark, $value, $mixMaxValue * 0.5),
+    #{$key}-8: mix($dark, $value, $mixMaxValue * 0.75),
+    #{$key}-9: mix($dark, $value, $mixMaxValue)
+  );
+
+  @each $shade-key, $shade-value in $color-shades {
+    .#{$shade-key} {
+      color: #{$shade-value};
+    }
+    .bg-#{$shade-key} {
+      background-color: #{$shade-value};
+    }
+  }
+}

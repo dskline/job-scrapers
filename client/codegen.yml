@@ -1,0 +1,7 @@
+schema: http://localhost:8080/v1/graphql
+generates:
+  src/@types/generated/graphql/index.d.ts:
+    plugins:
+      - typescript
+    config:
+      transformUnderscore: true

@@ -1,0 +1,9 @@
+.next
+node_modules
+
+*.env
+schema.graphql
+
+**/public/workbox-*.js
+**/public/sw.js
+**/public/manifest.json
