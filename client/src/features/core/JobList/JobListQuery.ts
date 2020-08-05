@@ -7,12 +7,12 @@ export const queryJobList = async (): Promise<JobListQueryResponse> =>
   await graphqlClient.request(gql, {
     order_by: {
       scraper: 'asc',
-      companyByCompanyId: { rating: 'desc' },
+      company: { rating: 'desc' },
     },
     where: {
       created_at: { _gte: new Date().toISOString().split('T')[0] },
       _not: {
-        companyByCompanyId: {
+        company: {
           user_ignores: {
             id: { _is_null: false },
           },
