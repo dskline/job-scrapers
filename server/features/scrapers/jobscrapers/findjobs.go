@@ -39,11 +39,11 @@ func (scraper ScraperFindJobs) Scrape(options ScraperOptions) []model.Job {
 				chromedp.Run(ctx,
 					chromedp.TextContent(xpath+`//a[@class="job_title"]`, &job.Title),
 					chromedp.AttributeValue(xpath+`//a[@class="job_title"]`, `href`, &job.Url, nil),
-					chromedp.TextContent(xpath+`//a[@title="Job Details"]`, &job.CompanyName),
+					chromedp.TextContent(xpath+`//a[@title="Job Details"]`, &job.Company.CompanyName),
 				)
 				job.Url = "https://find.jobs" + job.Url
 				job.Title = strings.TrimSpace(job.Title)
-				job.CompanyName = job.CompanyName[:strings.Index(job.CompanyName, " •")]
+				job.Company.CompanyName = job.Company.CompanyName[:strings.Index(job.Company.CompanyName, " •")]
 				return job
 			},
 		},

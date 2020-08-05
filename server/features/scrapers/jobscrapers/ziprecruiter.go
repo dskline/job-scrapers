@@ -32,7 +32,7 @@ func (scraper ScraperZipRecruiter) Scrape(options ScraperOptions) []model.Job {
 				var job model.Job
 				chromedp.Run(ctx,
 					chromedp.TextContent(xpath+`//span[@class="just_job_title"]`, &job.Title),
-					chromedp.TextContent(xpath+`//a[@class="t_org_link name"]`, &job.CompanyName),
+					chromedp.TextContent(xpath+`//a[@class="t_org_link name"]`, &job.Company.CompanyName),
 					chromedp.AttributeValue(xpath+`//a[@class="job_link t_job_link"]`, `href`, &job.Url, nil),
 					chromedp.TextContent(xpath+`//p[@class="job_snippet"]`, &job.Description),
 				)

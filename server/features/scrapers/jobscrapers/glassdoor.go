@@ -31,7 +31,7 @@ func (scraper ScraperGlassdoorJobs) Scrape(options ScraperOptions) []model.Job {
 				var job model.Job
 				chromedp.Run(ctx,
 					// Yes, the class is misspelled :-)
-					chromedp.TextContent(xpath+`//div[contains(@class, "jobEmpolyerName")]`, &job.CompanyName),
+					chromedp.TextContent(xpath+`//div[contains(@class, "jobEmpolyerName")]`, &job.Company.CompanyName),
 					chromedp.AttributeValue(xpath+`//div[contains(@class, "jobHeader")]/a`, `href`, &job.Url, nil),
 					chromedp.TextContent(xpath+`/a[contains(@class, "jobTitle")]`, &job.Title),
 					chromedp.Click(xpath),

@@ -28,6 +28,8 @@ func PageHasResults(config ScraperConfig) bool {
 		ctx, cancel = chromedp.NewExecAllocator(ctx, disableHeadlessOpts...)
 	}
 	ctx, cancel = chromedp.NewContext(ctx)
+	// 	ctx := scrapers.GetChromeDriver()
+	// 	var cancel context.CancelFunc
 	ctx, cancel = context.WithTimeout(ctx, 5*time.Second)
 	defer cancel()
 
@@ -72,7 +74,7 @@ func GetResults(config ScraperConfig) []model.Job {
 	fmt.Println(len(nodes), "results found")
 	for _, n := range nodes {
 		job := config.GetResultsScraperConfig.ResultHandler(ctx, n.FullXPathByID())
-		fmt.Println(job.Title, "|", job.CompanyName, "|", job.Url)
+		fmt.Println(job.Title, "|", job.Company.CompanyName, "|", job.Url)
 		jobs = append(jobs, job)
 	}
 	return jobs

@@ -32,7 +32,7 @@ func (scraper ScraperMonster) Scrape(options ScraperOptions) []model.Job {
 				chromedp.Run(ctx,
 					chromedp.TextContent(xpath+`//header//a`, &job.Title),
 					chromedp.AttributeValue(xpath+`//header//a`, `href`, &job.Url, nil),
-					chromedp.TextContent(xpath+`//div[@class="company"]/span[@class="name"]`, &job.CompanyName),
+					chromedp.TextContent(xpath+`//div[@class="company"]/span[@class="name"]`, &job.Company.CompanyName),
 				)
 				job.Title = strings.TrimSpace(job.Title)
 

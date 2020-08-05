@@ -13,106 +13,50 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="67633b8c-6c4f-43b1-b009-f4296f58cfff" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.env" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.env.example" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/JobSearch.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/.graphqlconfig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/codegen.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/next-env.d.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/next.config.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/package-lock.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/postcss.config.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/public/browserconfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/public/favicon/android-icon-144x144.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/public/favicon/android-icon-192x192.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/public/favicon/android-icon-36x36.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/public/favicon/android-icon-48x48.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/public/favicon/android-icon-72x72.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/public/favicon/android-icon-96x96.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/public/favicon/apple-icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/public/favicon/favicon.ico" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/public/favicon/icon-128x128.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/public/favicon/icon-144x144.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/public/favicon/icon-152x152.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/public/favicon/icon-192x192.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/public/favicon/icon-384x384.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/public/favicon/icon-512x512.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/public/favicon/icon-72x72.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/public/favicon/icon-96x96.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/public/favicon/ms-icon-150x150.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/public/favicon/ms-icon-310x310.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/public/favicon/ms-icon-70x70.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/public/manifest.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/public/sw.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/@types/pwa/index.d.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/components/Navbar/NavLink.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/components/Navbar/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/config/css/colors.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/config/css/colors.module.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/config/default.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/config/development.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/config/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/config/nextjs/configAdapter.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/config/production.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/config/staging.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/config/types.d.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/features/core/JobList/GlassdoorDetails.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/features/core/JobList/JobCard.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/features/core/JobList/JobListQuery.graphql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/features/core/JobList/JobListQuery.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/features/core/JobList/ScraperToggleBar/ScraperToggleItem.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/features/core/JobList/ScraperToggleBar/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/features/core/JobList/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/features/core/JobList/types.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/features/pwa/nextConfig.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/features/theme/ThemeProvider.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/pages/_app.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/pages/_document.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/pages/api/companies/[...params].ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/pages/api/jobs/scrape.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/pages/global.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/pages/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/pages/settings.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/templates/core/BasePage.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/utilities/analytics/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/utilities/graphql/GraphQLClient.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/utilities/logger/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/utilities/nextjs/HeadLink.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/tsconfig.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/features/api/companies.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/features/api/jobs.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/features/api/routes.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/features/config/config.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/features/db/crud/company.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/features/db/db.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/features/db/enum/scraper.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/features/db/model/company.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/features/db/model/job.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/features/db/model/user.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/features/db/model/user_ignores.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/features/scrapers/companyscrapers/glassdoor.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/features/scrapers/jobscrapers/findjobs.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/features/scrapers/jobscrapers/glassdoor.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/features/scrapers/jobscrapers/google.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/features/scrapers/jobscrapers/indeed.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/features/scrapers/jobscrapers/joblift.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/features/scrapers/jobscrapers/jobs.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/features/scrapers/jobscrapers/monster.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/features/scrapers/jobscrapers/types.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/features/scrapers/jobscrapers/utils.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/features/scrapers/jobscrapers/ziprecruiter.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/go.mod" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/go.sum" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/main.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/test.go" afterDir="false" />
+    <list default="true" id="67633b8c-6c4f-43b1-b009-f4296f58cfff" name="Default Changelist" comment="initial commit">
+      <change afterPath="$PROJECT_DIR$/client/.dockerignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/.env.example" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env.example" beforeDir="false" afterPath="$PROJECT_DIR$/.env.example" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/JobSearch.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/JobSearch.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/public/sw.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/public/sw.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/config/default.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/config/default.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/config/development.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/config/development.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/config/nextjs/configAdapter.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/config/nextjs/configAdapter.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/config/production.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/config/production.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/config/staging.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/config/staging.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/config/types.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/config/types.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/features/core/JobList/JobListQuery.graphql" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/features/core/JobList/JobListQuery.graphql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/features/core/JobList/JobListQuery.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/features/core/JobList/JobListQuery.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/_app.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/api/companies/[...params].ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/api/companies/[...params].ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/api/jobs/scrape.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/api/jobs/scrape.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/utilities/analytics/index.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/utilities/graphql/GraphQLClient.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/utilities/graphql/GraphQLClient.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/utilities/logger/index.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/features/api/jobs.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/features/api/jobs.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/features/db/db.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/features/db/db.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/features/db/model/company.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/features/db/model/company.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/features/db/model/job.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/features/db/model/job.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/features/db/model/user_ignores.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/features/db/model/user_ignores.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/features/scrapers/companyscrapers/glassdoor.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/features/scrapers/companyscrapers/glassdoor.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/features/scrapers/jobscrapers/findjobs.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/features/scrapers/jobscrapers/findjobs.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/features/scrapers/jobscrapers/glassdoor.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/features/scrapers/jobscrapers/glassdoor.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/features/scrapers/jobscrapers/google.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/features/scrapers/jobscrapers/google.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/features/scrapers/jobscrapers/indeed.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/features/scrapers/jobscrapers/indeed.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/features/scrapers/jobscrapers/joblift.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/features/scrapers/jobscrapers/joblift.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/features/scrapers/jobscrapers/jobs.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/features/scrapers/jobscrapers/jobs.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/features/scrapers/jobscrapers/monster.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/features/scrapers/jobscrapers/monster.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/features/scrapers/jobscrapers/utils.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/features/scrapers/jobscrapers/utils.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/features/scrapers/jobscrapers/ziprecruiter.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/features/scrapers/jobscrapers/ziprecruiter.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/server/go.mod" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/server/go.sum" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/test.go" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -162,12 +106,6 @@
     <property name="ts.external.directory.path" value="$PROJECT_DIR$/client/node_modules/typescript/lib" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$" />
-      <recent name="$PROJECT_DIR$/client" />
-      <recent name="'" />
-      <recent name="$PROJECT_DIR$/features/scrapers" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/client/src/pages" />
@@ -175,8 +113,15 @@
       <recent name="$PROJECT_DIR$/client" />
       <recent name="$PROJECT_DIR$/server/features" />
     </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/server" />
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/client" />
+      <recent name="'" />
+      <recent name="$PROJECT_DIR$/features/scrapers" />
+    </key>
   </component>
-  <component name="RunManager" selected="npm.dev">
+  <component name="RunManager" selected="Docker.docker-compose.yml.chrome-driver: Compose Deployment">
     <configuration name="docker-compose.yml: Compose Deployment (1)" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
       <deployment type="docker-compose.yml">
         <settings>
@@ -185,20 +130,38 @@
       </deployment>
       <method v="2" />
     </configuration>
-    <configuration name="docker-compose.yml: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
+    <configuration name="docker-compose.yml.chrome-driver: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
       <deployment type="docker-compose.yml">
         <settings>
+          <option name="services">
+            <list>
+              <option value="chrome-driver" />
+            </list>
+          </option>
           <option name="sourceFilePath" value="docker-compose.yml" />
         </settings>
       </deployment>
       <method v="2" />
     </configuration>
-    <configuration name="docker-compose.yml.graphql-engine: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
+    <configuration name="docker-compose.yml.server: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
       <deployment type="docker-compose.yml">
         <settings>
           <option name="services">
             <list>
-              <option value="graphql-engine" />
+              <option value="server" />
+            </list>
+          </option>
+          <option name="sourceFilePath" value="docker-compose.yml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <configuration name="docker-compose.yml.webapp: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="services">
+            <list>
+              <option value="webapp" />
             </list>
           </option>
           <option name="sourceFilePath" value="docker-compose.yml" />
@@ -216,23 +179,13 @@
       <envs />
       <method v="2" />
     </configuration>
-    <configuration name="start" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
-      <package-json value="$PROJECT_DIR$/client/package.json" />
-      <command value="run" />
-      <scripts>
-        <script value="start" />
-      </scripts>
-      <node-interpreter value="project" />
-      <envs />
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Docker.docker-compose.yml: Compose Deployment (1)" />
+        <item itemvalue="Docker.docker-compose.yml.server: Compose Deployment" />
+        <item itemvalue="Docker.docker-compose.yml.chrome-driver: Compose Deployment" />
+        <item itemvalue="Docker.docker-compose.yml.webapp: Compose Deployment" />
         <item itemvalue="npm.dev" />
-        <item itemvalue="npm.start" />
-        <item itemvalue="Docker.docker-compose.yml.graphql-engine: Compose Deployment" />
-        <item itemvalue="Docker.docker-compose.yml: Compose Deployment" />
       </list>
     </recent_temporary>
   </component>
@@ -254,8 +207,19 @@
       <workItem from="1596228145016" duration="308000" />
       <workItem from="1596282192446" duration="364000" />
       <workItem from="1596317255356" duration="7766000" />
-      <workItem from="1596375726256" duration="23068000" />
+      <workItem from="1596375726256" duration="28286000" />
+      <workItem from="1596502721134" duration="8260000" />
+      <workItem from="1596558700812" duration="607000" />
+      <workItem from="1596631467806" duration="15403000" />
     </task>
+    <task id="LOCAL-00001" summary="initial commit">
+      <created>1596488388995</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1596488388995</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -272,6 +236,10 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="initial commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="initial commit" />
   </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>
@@ -294,6 +262,10 @@
       <screen x="54" y="23" width="1386" height="877" />
     </state>
     <state x="584" y="380" key="#Path_mapping/54.23.1386.877@54.23.1386.877" timestamp="1595466899714" />
+    <state x="427" y="270" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1596497945882">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="427" y="270" key="#com.intellij.fileTypes.FileTypeChooser/0.23.1440.877@0.23.1440.877" timestamp="1596497945882" />
     <state x="518" y="319" key="#com.intellij.ide.actionMacro.EditMacrosDialog" timestamp="1596050209476">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
@@ -366,14 +338,18 @@
     <state x="249" y="100" key="SettingsEditor/54.23.1386.877@54.23.1386.877" timestamp="1595466901601" />
     <state x="249" y="100" key="SettingsEditor/60.23.1380.877@60.23.1380.877" timestamp="1595465776955" />
     <state x="251" y="100" key="SettingsEditor/62.23.1378.877@62.23.1378.877" timestamp="1594557933241" />
-    <state width="522" height="445" key="SwitcherDM" timestamp="1596486457964">
+    <state width="522" height="445" key="SwitcherDM" timestamp="1596658209126">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="522" height="445" key="SwitcherDM/0.23.1440.877@0.23.1440.877" timestamp="1596486457964" />
+    <state width="522" height="445" key="SwitcherDM/0.23.1440.877@0.23.1440.877" timestamp="1596658209126" />
     <state width="502" height="445" key="SwitcherDM/54.23.1386.877@54.23.1386.877" timestamp="1595473939293" />
     <state width="499" height="445" key="SwitcherDM/60.23.1380.877@60.23.1380.877" timestamp="1595465811041" />
     <state width="498" height="445" key="SwitcherDM/62.23.1378.877@62.23.1378.877" timestamp="1595034122744" />
     <state width="498" height="445" key="SwitcherDM/65.23.1375.877@65.23.1375.877" timestamp="1595032595189" />
+    <state x="320" y="201" key="Vcs.Push.Dialog.v2" timestamp="1596488396238">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="320" y="201" key="Vcs.Push.Dialog.v2/0.23.1440.877@0.23.1440.877" timestamp="1596488396238" />
     <state x="142" y="356" width="1213" height="641" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1596053313214">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
@@ -383,20 +359,24 @@
       <screen x="60" y="23" width="1380" height="877" />
     </state>
     <state x="169" y="141" width="1162" height="641" key="com.intellij.history.integration.ui.views.SelectionHistoryDialog/60.23.1380.877@60.23.1380.877" timestamp="1594692046242" />
-    <state x="405" y="50" width="627" height="822" key="find.popup" timestamp="1596151414627">
+    <state x="51" y="50" width="1389" height="822" key="find.popup" timestamp="1596555373069">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state x="405" y="50" width="627" height="822" key="find.popup/0.23.1440.877@0.23.1440.877" timestamp="1596151414627" />
+    <state x="51" y="50" width="1389" height="822" key="find.popup/0.23.1440.877@0.23.1440.877" timestamp="1596555373069" />
     <state x="450" y="50" width="600" height="822" key="find.popup/62.23.1378.877@62.23.1378.877" timestamp="1594560987676" />
-    <state x="368" y="211" width="703" height="678" key="search.everywhere.popup" timestamp="1596487896145">
+    <state x="368" y="211" width="703" height="678" key="search.everywhere.popup" timestamp="1596654544612">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state x="368" y="211" width="703" height="678" key="search.everywhere.popup/0.23.1440.877@0.23.1440.877" timestamp="1596487896145" />
+    <state x="368" y="211" width="703" height="678" key="search.everywhere.popup/0.23.1440.877@0.23.1440.877" timestamp="1596654544612" />
     <state x="406" y="211" width="678" height="678" key="search.everywhere.popup/50.23.1390.877@50.23.1390.877" timestamp="1595592411218" />
     <state x="407" y="211" width="677" height="678" key="search.everywhere.popup/52.23.1388.877@52.23.1388.877" timestamp="1595626887973" />
     <state x="408" y="211" width="676" height="678" key="search.everywhere.popup/54.23.1386.877@54.23.1386.877" timestamp="1595466935683" />
     <state x="412" y="211" width="673" height="678" key="search.everywhere.popup/60.23.1380.877@60.23.1380.877" timestamp="1595465896457" />
     <state x="413" y="211" width="672" height="678" key="search.everywhere.popup/62.23.1378.877@62.23.1378.877" timestamp="1594665880833" />
     <state x="415" y="211" width="672" height="678" key="search.everywhere.popup/65.23.1375.877@65.23.1375.877" timestamp="1594658571374" />
+    <state x="450" y="305" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1596499812386">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="450" y="305" key="vcs.readOnlyHandler.ReadOnlyStatusDialog/0.23.1440.877@0.23.1440.877" timestamp="1596499812386" />
   </component>
 </project>

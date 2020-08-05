@@ -36,7 +36,7 @@ func (scraper ScraperJoblift) Scrape(options ScraperOptions) []model.Job {
 				chromedp.Run(ctx,
 					chromedp.TextContent(xpath+`//a[@data-testid="jobTitleLink"]`, &job.Title),
 					chromedp.AttributeValue(xpath+`//a[@data-testid="jobTitleLink"]`, `href`, &job.Url, nil),
-					chromedp.TextContent(xpath+`//div[@class="job__infos"]/span[1]`, &job.CompanyName),
+					chromedp.TextContent(xpath+`//div[@class="job__infos"]/span[1]`, &job.Company.CompanyName),
 				)
 				job.Url = "https://joblift.com" + job.Url
 				job.Title = strings.TrimSpace(job.Title)

@@ -34,9 +34,9 @@ func ScrapeJobs(scrapers []JobScraper) {
 		fmt.Println("Starting scraper:", scraper.Name())
 		for _, job := range scraper.Scrape(options) {
 			var persistedCompany model.Company
-			db.Instance().Where(&model.Company{CompanyName: job.CompanyName}).First(&persistedCompany)
+			db.Instance().Where(&model.Company{CompanyName: job.Company.CompanyName}).First(&persistedCompany)
 			if persistedCompany.Industry == "" {
-				job.Company = companyscrapers.ScrapeCompanyDetails(job.CompanyName)
+				job.Company = companyscrapers.ScrapeCompanyDetails(job.Company.CompanyName)
 			} else {
 				job.Company = persistedCompany
 			}

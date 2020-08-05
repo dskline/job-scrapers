@@ -9,6 +9,7 @@ services:
       - "${DATABASE_SQL_VOLUME}:/var/lib/postgresql/data"
     environment:
       POSTGRES_PASSWORD: docker
+
   graphql-engine:
     image: hasura/graphql-engine:v1.3.0
     ports:
@@ -22,14 +23,27 @@ services:
       HASURA_GRAPHQL_ENABLED_LOG_TYPES: startup, http-log, webhook-log, websocket-log, query-log
       ## uncomment next line to set an admin secret
       # HASURA_GRAPHQL_ADMIN_SECRET: myadminsecretkey
+
+# TODO: figure out how to get chromedp in docker
+  #  chrome-driver:
+  #    image: chromedp/headless-shell:latest
+  #    ports:
+  #      - "9222:9222"
+
+#  server:
+#    build: ./server
+#    volumes:
+#      - "${SERVER_EXE_VOLUME}:/usr/src/myapp/dist"
+#    working_dir: "/usr/src/myapp"
+#    command: "go build -a -tags netgo -ldflags '-w' -o dist/job_scraper_api *.go"
+
   webapp:
     build: ./client
     ports:
       - "3000:3000"
     restart: always
-    depends_on:
-      - "graphql-engine"
     volumes:
       - "./client:/usr/app/"
       - "/usr/app/node_modules"
-    command: "npm run build && npm run start"
+    working_dir: "/usr/app"
+    command: "npm run start"

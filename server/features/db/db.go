@@ -23,8 +23,11 @@ func Connect() {
 	//db.DropTable(&model.UserIgnores{})
 	db.AutoMigrate(&model.Company{})
 	db.AutoMigrate(&model.Job{})
+	db.Model(&model.Job{}).AddForeignKey("company_id", "companies(id)", "CASCADE", "CASCADE")
 	db.AutoMigrate(&model.User{})
 	db.AutoMigrate(&model.UserIgnores{})
+	db.Model(&model.UserIgnores{}).AddForeignKey("user_id", "users(id)", "CASCADE", "CASCADE")
+	db.Model(&model.UserIgnores{}).AddForeignKey("company_id", "companies(id)", "CASCADE", "CASCADE")
 }
 
 func Instance() *gorm.DB {

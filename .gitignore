@@ -1,7 +1,7 @@
 .next
 node_modules
 
-*.env
+.env
 schema.graphql
 
 **/public/workbox-*.js

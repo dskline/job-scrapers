@@ -27,13 +27,13 @@ func (scraper ScraperIndeed) Scrape(options ScraperOptions) []model.Job {
 				chromedp.Run(ctx,
 					chromedp.TextContent(xpath+`/h2[@class="title"]/a`, &job.Title),
 					chromedp.AttributeValue(xpath+`/h2[@class="title"]/a`, `href`, &job.Url, nil),
-					chromedp.TextContent(xpath+`//span[@class="company"]`, &job.CompanyName),
+					chromedp.TextContent(xpath+`//span[@class="company"]`, &job.Company.CompanyName),
 					chromedp.Click(xpath),
 					chromedp.TextContent(`#vjs-desc`, &job.Description),
 					chromedp.OuterHTML(`#vjs-desc`, &job.DescriptionHTML),
 				)
 				job.Title = strings.TrimSpace(job.Title)
-				job.CompanyName = strings.TrimSpace(job.CompanyName)
+				job.Company.CompanyName = strings.TrimSpace(job.Company.CompanyName)
 				job.Url = `https://www.indeed.com` + job.Url
 				return job
 			},

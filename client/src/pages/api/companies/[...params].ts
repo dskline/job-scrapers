@@ -1,5 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 
+import config from 'src/config'
+
 export default (req: NextApiRequest, res: NextApiResponse): void => {
   if (req.method === 'POST' && req.query.params[1] === 'requestUpdate') {
     requestFullScraperUpdate(req.query.params[0])
@@ -12,7 +14,10 @@ export default (req: NextApiRequest, res: NextApiResponse): void => {
 }
 
 function requestFullScraperUpdate (companyId) {
-  fetch(`http://localhost:9000/api/v1/companies/${companyId}/requestUpdate`, {
-    method: 'POST',
-  })
+  fetch(
+    `${config.public.serverEndpoint}/companies/${companyId}/requestUpdate`,
+    {
+      method: 'POST',
+    }
+  )
 }

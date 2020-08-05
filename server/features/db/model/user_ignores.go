@@ -7,7 +7,7 @@ import (
 type UserIgnores struct {
 	gorm.Model
 	CompanyId uint
-	Company   Company
+	Company   Company `gorm:"foreignkey:CompanyId"`
 	UserId    uint
-	User      User
+	User      User `gorm:"foreignkey:UserId"`
 }

@@ -8,9 +8,8 @@ import (
 type Job struct {
 	gorm.Model
 	Title           string `gorm:"not null"`
-	CompanyName     string
 	CompanyId       uint
-	Company         Company
+	Company         Company `gorm:"foreignkey:CompanyId"`
 	Description     string `gorm:"not null"`
 	DescriptionHTML string `gorm:"not null"`
 	Url             string `gorm:"not null;unique"`

@@ -8,5 +8,5 @@ import (
 func scrapeJobs(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
-	jobscrapers.ScrapeJobs()
+	jobscrapers.ScrapeJobs(nil)
 }

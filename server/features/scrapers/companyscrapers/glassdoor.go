@@ -20,7 +20,7 @@ var glassdoorRatingSelector = `.v2__EIReviewsRatingsStylesV2__ratingNum.v2__EIRe
  */
 func ScrapeCompanyDetails(companyName string) model.Company {
 	ctx, cancel := chromedp.NewContext(context.Background())
-	ctx, cancel = context.WithTimeout(ctx, 20*time.Second)
+	ctx, cancel = context.WithTimeout(ctx, 1*time.Minute)
 	defer cancel()
 
 	var company model.Company

@@ -13,8 +13,8 @@ class NextConfigAdapter {
     const config = convict(defaultConfig)
 
     // Load environment dependent configuration
-    const env = config.get('env')
-    config.loadFile(`./src/config/${env}.json`)
+    // const env = config.get('env')
+    // config.loadFile(`./src/config/${env}.json`)
 
     this.privateConfig = Object.keys(defaultConfig).reduce((obj, key) => {
       obj[key] = config.get(key)

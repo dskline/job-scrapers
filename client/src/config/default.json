@@ -1,29 +1,12 @@
 {
-  "env": {
-    "doc": "The application environment",
-    "format": ["production", "development", "staging"],
-    "default": "development",
-    "env": "APP_ENV"
-  },
-  "isDebugMode": {
-    "doc": "Flag to enable debug features (disabled in production)",
-    "format": [true, false],
-    "default": false,
-    "env": "DEBUG_MODE"
-  },
   "gqlEndpoint": {
     "doc": "The primary graphql endpoint for database operations",
     "default": "http://localhost:8080/v1/graphql",
     "env": "GRAPHQL_ENDPOINT"
   },
-  "cloudinaryCloudName": {
-    "doc": "The cloud name given to the cloudinary bucket that images are hosted on (will be migrated to a new if the need arises)",
-    "default": "spencerkline",
-    "env": "CLOUD_NAME"
-  },
-  "googleAnalyticsId": {
-    "doc": "The ID authorized from Google Analytics",
-    "default": "UA-xxxxxxxxx-1",
-    "env": "GOOGLE_ANALYTICS_ID"
+  "serverEndpoint": {
+    "doc": "The endpoint for server operations",
+    "default": "http://localhost:9000/api/v1",
+    "env": "SERVER_ENDPOINT"
   }
 }

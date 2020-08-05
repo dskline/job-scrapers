@@ -1,5 +1,7 @@
 import { GraphQLClient } from 'graphql-request'
 
-const client = new GraphQLClient('http://localhost:8080/v1/graphql')
+import config from 'src/config'
+
+const client = new GraphQLClient(config.public.gqlEndpoint)
 
 export default client

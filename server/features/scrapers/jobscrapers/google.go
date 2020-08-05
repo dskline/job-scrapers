@@ -26,7 +26,7 @@ func (scraper ScraperGoogleJobs) Scrape(options ScraperOptions) []model.Job {
 				var job model.Job
 				chromedp.Run(ctx,
 					chromedp.TextContent(xpath+`//div[@role="heading"]`, &job.Title),
-					chromedp.TextContent(xpath+`//div[@role="heading"]/following-sibling::div[1]/div/div[1]`, &job.CompanyName),
+					chromedp.TextContent(xpath+`//div[@role="heading"]/following-sibling::div[1]/div/div[1]`, &job.Company.CompanyName),
 					chromedp.Click(xpath),
 					chromedp.Location(&job.Url),
 					chromedp.TextContent(`//div[@jscontroller]/span[@style="line-height:1.5em"]`, &job.Description),
