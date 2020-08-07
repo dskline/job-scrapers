@@ -47,11 +47,3 @@ services:
       - "/usr/app/node_modules"
     working_dir: "/usr/app"
     command: "npm run start"
-
-  jenkins:
-    extends:
-      service:
-    build: ./devops/jenkins
-    ports:
-      - "8080:8081"
-      - "50000:50000"
