@@ -30,7 +30,7 @@ func PageHasResults(config ScraperConfig) bool {
 	ctx, cancel = chromedp.NewContext(ctx)
 	// 	ctx := scrapers.GetChromeDriver()
 	// 	var cancel context.CancelFunc
-	ctx, cancel = context.WithTimeout(ctx, 5*time.Second)
+	ctx, cancel = context.WithTimeout(ctx, 10*time.Second)
 	defer cancel()
 
 	var message string

@@ -6,7 +6,7 @@ services:
       - "5432:5432"
     restart: always
     volumes:
-      - "${DATABASE_SQL_VOLUME}:/var/lib/postgresql/data"
+      - "${DOCKER_VOLUME_SQL_DATABASE}:/var/lib/postgresql/data"
     environment:
       POSTGRES_PASSWORD: docker
 
@@ -47,3 +47,11 @@ services:
       - "/usr/app/node_modules"
     working_dir: "/usr/app"
     command: "npm run start"
+
+  jenkins:
+    extends:
+      service:
+    build: ./devops/jenkins
+    ports:
+      - "8080:8081"
+      - "50000:50000"
