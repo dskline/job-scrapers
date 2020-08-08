@@ -38,6 +38,9 @@ func (scraper ScraperGlassdoorJobs) Scrape(options ScraperOptions) []model.Job {
 					chromedp.TextContent("#Details .jobDescriptionContent", &job.Description),
 					chromedp.OuterHTML("#Details .jobDescriptionContent", &job.DescriptionHTML),
 				)
+				if job.Url[0] == '/' {
+				    job.Url = "https://www.glassdoor.com" + job.Url
+				}
 				return job
 			},
 		},
