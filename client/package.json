@@ -1,6 +1,6 @@
 {
   "name": "@dskline/job-scrapers",
-  "version": "1.0.0-beta.0",
+  "version": "1.0.0",
   "description": "A daily job availability reporting tool",
   "author": "Spencer Kline (dskline1@gmail.com)",
   "license": "MIT",
