@@ -55,6 +55,7 @@ const JobList: FC<JobListQueryResponse> = ({ jobs }) => {
               </div>
               <div className='flex justify-end'>
                 <button
+                  autoFocus
                   className='px-5 py-2 rounded border border-gray-400'
                   onClick={() => setCompanyToIgnore(undefined)}
                 >
@@ -63,9 +64,12 @@ const JobList: FC<JobListQueryResponse> = ({ jobs }) => {
                 <button
                   className='px-5 py-2 ml-2 rounded bg-red-600 text-white'
                   onClick={() => {
-                    fetch(`/api/companies/${companyToIgnore.id}/setIgnoreFlag`, {
-                      method: 'POST',
-                    })
+                    fetch(
+                      `/api/companies/${companyToIgnore.id}/setIgnoreFlag`,
+                      {
+                        method: 'POST',
+                      }
+                    )
                     setCompanyToIgnore(undefined)
                   }}
                 >
