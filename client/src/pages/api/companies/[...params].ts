@@ -1,23 +1,24 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 
-import config from 'src/config'
+import ignoreCompany from 'src/features/core/api/companies/companyId/ignore'
+import requestUpdate from 'src/features/core/api/companies/companyId/requestUpdate'
 
 export default (req: NextApiRequest, res: NextApiResponse): void => {
-  if (req.method === 'POST' && req.query.params[1] === 'requestUpdate') {
-    requestFullScraperUpdate(req.query.params[0])
-    res.status(200).json({ message: 'Request sent' })
-  } else {
-    res
-      .status(401)
-      .json({ message: 'Unknown query parameters for this request' })
-  }
-}
-
-function requestFullScraperUpdate (companyId) {
-  fetch(
-    `${config.public.serverEndpoint}/companies/${companyId}/requestUpdate`,
-    {
-      method: 'POST',
+  if (req.method === 'POST') {
+    switch (req.query.params[1]) {
+      case 'requestUpdate': {
+        requestUpdate(res, req.query.params[0])
+        break
+      }
+      case 'setIgnoreFlag': {
+        ignoreCompany(res, req.query.params[0])
+        break
+      }
+      default: {
+        res
+          .status(401)
+          .json({ message: 'Unknown query parameters for this request' })
+      }
     }
-  )
+  }
 }
