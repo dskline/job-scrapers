@@ -3,11 +3,27 @@ import ExclamationIcon from 'heroicons/solid/exclamation-circle.svg'
 
 import Modal from 'src/components/Modal'
 import JobCard from 'src/features/core/JobList/JobCard'
-import { Company, JobListQueryResponse } from 'src/features/core/JobList/types'
+import {
+  Company,
+  Job,
+  JobListQueryResponse,
+} from 'src/features/core/JobList/types'
+
+function categorizeJobsByScraper (jobs: Array<Job>): { [key: string]: Job[] } {
+  return jobs.reduce((previousValue, currentValue) => {
+    if (!previousValue[currentValue.scraper]) {
+      previousValue[currentValue.scraper] = [currentValue]
+    } else {
+      previousValue[currentValue.scraper].push(currentValue)
+    }
+    return previousValue
+  }, {})
+}
 
 const JobList: FC<JobListQueryResponse> = ({ jobs }) => {
   const [jobMenuOpened, setJobMenuOpened] = useState()
   const [companyToIgnore, setCompanyToIgnore] = useState<Company>()
+  const jobsByScrapers = categorizeJobsByScraper(jobs)
 
   return (
     <div className='p-4 flex flex-col lg:w-1/2 lg:mx-auto'>
@@ -22,15 +38,33 @@ const JobList: FC<JobListQueryResponse> = ({ jobs }) => {
           </button>
         </div>
       ) : (
-        jobs.map((job) => (
-          <JobCard
-            key={job.url}
-            job={job}
-            handleCompanyIgnore={(company) => setCompanyToIgnore(company)}
-            handleMenuOpened={(url) => setJobMenuOpened(url)}
-            isMenuOpened={job.url === jobMenuOpened}
-          />
-        ))
+        <>
+          <div className='flex justify-between mt-4 mb-8'>
+            {Object.keys(jobsByScrapers).map((scraper) => (
+              <a key={scraper} className='capitalize' href={`#${scraper}`}>
+                {scraper} [{jobsByScrapers[scraper].length}]
+              </a>
+            ))}
+          </div>
+          {Object.keys(jobsByScrapers).map((scraper) => (
+            <div key={`header_${scraper}`} id={scraper} className='mb-12'>
+              <a href={`#${scraper}`}>
+                <h2 className='border rounded-lg py-2 px-4 bg-indigo-500 text-indigo-100 text-2xl capitalize italic'>
+                  # {scraper}
+                </h2>
+              </a>
+              {jobsByScrapers[scraper].map((job) => (
+                <JobCard
+                  key={job.url}
+                  job={job}
+                  handleCompanyIgnore={(company) => setCompanyToIgnore(company)}
+                  handleMenuOpened={(url) => setJobMenuOpened(url)}
+                  isMenuOpened={job.url === jobMenuOpened}
+                />
+              ))}
+            </div>
+          ))}
+        </>
       )}
       {jobMenuOpened && (
         <button

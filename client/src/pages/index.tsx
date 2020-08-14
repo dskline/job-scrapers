@@ -21,11 +21,11 @@ const JobListPage: NextPage<JobListPageProps> = ({
   <BasePage>
     <JobList jobs={jobs} />
     <div className='text-center pb-24'>
-      <a href={`/?date=${previousDate}`}>{'<- Previous Date'}</a>
+      <a href={`?date=${previousDate}`}>{'<- Previous Date'}</a>
       {!isLastResultPage && (
         <>
           <span className='px-4'>|</span>
-          <a href={`/?date=${nextDate}`}>{'Next Date ->'}</a>
+          <a href={`?date=${nextDate}`}>{'Next Date ->'}</a>
         </>
       )}
     </div>
