@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 
-import ignoreCompany from 'src/features/core/api/companies/companyId/ignore'
-import requestUpdate from 'src/features/core/api/companies/companyId/requestUpdate'
+import ignoreCompany from 'src/features/core/JobList/api/companies/companyId/ignore'
+import requestUpdate from 'src/features/core/JobList/api/companies/companyId/requestUpdate'
 
 export default (req: NextApiRequest, res: NextApiResponse): void => {
   if (req.method === 'POST') {
@@ -15,9 +15,7 @@ export default (req: NextApiRequest, res: NextApiResponse): void => {
         break
       }
       default: {
-        res
-          .status(401)
-          .json({ message: 'Unknown query parameters for this request' })
+        res.status(401).json({ message: 'Unknown query parameters for this request' })
       }
     }
   }
