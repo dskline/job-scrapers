@@ -24,18 +24,18 @@ services:
       ## uncomment next line to set an admin secret
       # HASURA_GRAPHQL_ADMIN_SECRET: myadminsecretkey
 
-# TODO: figure out how to get chromedp in docker
+  # TODO: figure out how to get chromedp in docker
   #  chrome-driver:
   #    image: chromedp/headless-shell:latest
   #    ports:
   #      - "9222:9222"
 
-#  server:
-#    build: ./server
-#    volumes:
-#      - "${SERVER_EXE_VOLUME}:/usr/src/myapp/dist"
-#    working_dir: "/usr/src/myapp"
-#    command: "go build -a -tags netgo -ldflags '-w' -o dist/job_scraper_api *.go"
+  #  server:
+  #    build: ./server
+  #    volumes:
+  #      - "${SERVER_EXE_VOLUME}:/usr/src/myapp/dist"
+  #    working_dir: "/usr/src/myapp"
+  #    command: "go build -a -tags netgo -ldflags '-w' -o dist/job_scraper_api *.go"
 
   webapp:
     build: ./client
@@ -44,6 +44,6 @@ services:
     restart: always
     volumes:
       - "./client:/usr/app/"
-#      - "/usr/app/node_modules"
+      - "/usr/app/node_modules"
     working_dir: "/usr/app"
     command: "npm run start"
