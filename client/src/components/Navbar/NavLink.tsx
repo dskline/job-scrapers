@@ -10,7 +10,7 @@ type Props = WithRouterProps & {
 };
 
 const defaultNavLinkClasses =
-  'block px-3 py-2 rounded-md text-base font-medium text-white hover:text-white hover:bg-gray-700'
+  'block px-3 py-2 rounded-md text-base font-medium text-white hover:text-white hover:bg-gray-700 cursor-pointer'
 
 const NavLink: FC<Props> = ({ router, children, className = '', href }) => {
   if (router.pathname === href) {
@@ -20,7 +20,7 @@ const NavLink: FC<Props> = ({ router, children, className = '', href }) => {
   }
   return (
     <Link href={href}>
-      <a className={className + ' ' + defaultNavLinkClasses}>{children}</a>
+      <span className={className + ' ' + defaultNavLinkClasses}>{children}</span>
     </Link>
   )
 }

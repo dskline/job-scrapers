@@ -1,57 +1,74 @@
-import React from 'react'
-import { GetServerSideProps, NextPage } from 'next'
+import React, { useEffect } from 'react'
+import { useSelector } from 'react-redux'
+import CalendarIcon from 'heroicons/outline/calendar.svg'
+import ArrowLeft from 'heroicons/solid/arrow-narrow-left.svg'
+import ArrowRight from 'heroicons/solid/arrow-narrow-right.svg'
+import { NextPage } from 'next'
+import Link from 'next/link'
 
+import { RootState, store, useAppDispatch } from 'src/config/redux/store'
 import JobList from 'src/features/core/JobList'
-import { queryJobList } from 'src/features/core/JobList/JobListQuery'
-import { JobListQueryResponse } from 'src/features/core/JobList/types'
+import { JOBLIST_ACTIONS } from 'src/features/core/JobList/store'
 import BasePage from 'src/templates/core/BasePage'
 
-type JobListPageProps = JobListQueryResponse & {
-  previousDate: string,
-  nextDate: string,
-  isLastResultPage: boolean
-};
+const JobListPage: NextPage = () => {
+  const { queryOptions, isLoading } = useSelector((state: RootState) => state.jobList)
+  const dispatch = useAppDispatch()
 
-const JobListPage: NextPage<JobListPageProps> = ({
-  jobs,
-  previousDate,
-  nextDate,
-  isLastResultPage,
-}) => (
-  <BasePage>
-    <JobList jobs={jobs} />
-    <div className='text-center pb-24'>
-      <a href={`?date=${previousDate}`}>{'<- Previous Date'}</a>
-      {!isLastResultPage && (
+  const todaysDate = fromDate(new Date(), 0)
+  const previousDate = fromDate(queryOptions.date, -1)
+  const nextDate = fromDate(queryOptions.date, 1)
+
+  useEffect(() => {
+    dispatch(JOBLIST_ACTIONS.fetchJobList())
+  }, [queryOptions])
+
+  return (
+    <BasePage>
+      {!isLoading && (
         <>
-          <span className='px-4'>|</span>
-          <a href={`?date=${nextDate}`}>{'Next Date ->'}</a>
+          <div className='flex justify-center text-xl pt-4'>
+            <span className='w-6 my-auto'>
+              <Link href={`?date=${previousDate}`}>
+                <span className='cursor-pointer' title='Navigate to previous date'>
+                  <ArrowLeft />
+                </span>
+              </Link>
+            </span>
+            <div className='flex content-center px-6'>
+              <div className='flex my-auto'>
+                <div className='h-5 w-5 mr-3'>
+                  <CalendarIcon />
+                </div>
+              </div>
+              <div>{queryOptions.date.replace(/-/g, '/')}</div>
+            </div>
+            <span className='w-6 my-auto'>
+              {nextDate <= todaysDate && (
+                <Link href={`?date=${nextDate}`}>
+                  <span className='cursor-pointer' title='Navigate to next date'>
+                    <ArrowRight />
+                  </span>
+                </Link>
+              )}
+            </span>
+          </div>
+          <JobList />
         </>
       )}
-    </div>
-  </BasePage>
-)
-
-export const getServerSideProps: GetServerSideProps<JobListPageProps> = async ({
-  query,
-}) => {
-  const todaysDate = new Date().toISOString().split('T')[0]
-  const desiredDate = (query.date || todaysDate) as string
-
-  const previousDate = new Date(desiredDate)
-  previousDate.setDate(previousDate.getDate() - 1)
-
-  const nextDate = new Date(desiredDate)
-  nextDate.setDate(nextDate.getDate() + 1)
-
-  return {
-    props: {
-      isLastResultPage: todaysDate === desiredDate,
-      previousDate: previousDate.toISOString().split('T')[0],
-      nextDate: nextDate.toISOString().split('T')[0],
-      ...(await queryJobList(desiredDate)),
-    },
-  }
+    </BasePage>
+  )
 }
+
+const fromDate = (fromDate: string | Date, daysDelta: number): string => {
+  const date = new Date(fromDate)
+  date.setDate(date.getDate() + daysDelta)
+  return date.toISOString().split('T')[0]
+}
+
+export const getServerSideProps = store.getServerSideProps(async ({ query, store }) => {
+  const desiredDate = (query.date as string) ?? new Date().toISOString().split('T')[0]
+  store.dispatch(JOBLIST_ACTIONS.assignQueryOptions({ date: desiredDate }))
+})
 
 export default JobListPage

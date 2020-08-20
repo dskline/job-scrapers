@@ -19,7 +19,8 @@ const Navbar: FC = () => {
               />
             </div>
             <div className='hidden md:block'>
-              <div className='ml-10 flex items-baseline'>
+              <div className='ml-10 flex items-baseline
+              '>
                 <NavLink href='/'>Dashboard</NavLink>
                 <NavLink className='ml-4' href='/settings'>
                   Settings
@@ -33,12 +34,7 @@ const Navbar: FC = () => {
                 className='p-1 border-2 border-transparent text-gray-400 rounded-full hover:text-white focus:outline-none focus:text-white focus:bg-gray-700'
                 aria-label='Notifications'
               >
-                <svg
-                  className='h-6 w-6'
-                  stroke='currentColor'
-                  fill='none'
-                  viewBox='0 0 24 24'
-                >
+                <svg className='h-6 w-6' stroke='currentColor' fill='none' viewBox='0 0 24 24'>
                   <path
                     strokeLinecap='round'
                     strokeLinejoin='round'
@@ -97,12 +93,7 @@ const Navbar: FC = () => {
               className='inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:bg-gray-700 focus:text-white'
               onClick={(): void => setIsMenuOpen(!isMenuOpen)}
             >
-              <svg
-                className='block h-6 w-6'
-                stroke='currentColor'
-                fill='none'
-                viewBox='0 0 24 24'
-              >
+              <svg className='block h-6 w-6' stroke='currentColor' fill='none' viewBox='0 0 24 24'>
                 <path
                   strokeLinecap='round'
                   strokeLinejoin='round'
@@ -110,12 +101,7 @@ const Navbar: FC = () => {
                   d='M4 6h16M4 12h16M4 18h16'
                 />
               </svg>
-              <svg
-                className='hidden h-6 w-6'
-                stroke='currentColor'
-                fill='none'
-                viewBox='0 0 24 24'
-              >
+              <svg className='hidden h-6 w-6' stroke='currentColor' fill='none' viewBox='0 0 24 24'>
                 <path
                   strokeLinecap='round'
                   strokeLinejoin='round'
@@ -142,9 +128,7 @@ const Navbar: FC = () => {
               />
             </div>
             <div className='ml-3'>
-              <div className='text-base font-medium leading-none text-white'>
-                Tom Cook
-              </div>
+              <div className='text-base font-medium leading-none text-white'>Tom Cook</div>
               <div className='mt-1 text-sm font-medium leading-none text-gray-400'>
                 tom@example.com
               </div>

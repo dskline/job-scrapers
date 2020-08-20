@@ -44,6 +44,6 @@ services:
     restart: always
     volumes:
       - "./client:/usr/app/"
-      - "/usr/app/node_modules"
+#      - "/usr/app/node_modules"
     working_dir: "/usr/app"
     command: "npm run start"
