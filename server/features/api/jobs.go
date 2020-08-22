@@ -1,6 +1,7 @@
 package api
 
 import (
+	"encoding/json"
 	"github.com/dskline/jobsearch/features/scrapers/jobscrapers"
 	"net/http"
 )
@@ -8,5 +9,7 @@ import (
 func scrapeJobs(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
-	jobscrapers.ScrapeJobs(nil)
+	var scraperOptions jobscrapers.ScraperOptions
+	_ = json.NewDecoder(r.Body).Decode(&scraperOptions)
+	jobscrapers.ScrapeJobs(scraperOptions)
 }

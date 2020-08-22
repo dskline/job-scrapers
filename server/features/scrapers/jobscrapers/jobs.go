@@ -8,9 +8,9 @@ import (
 	"github.com/dskline/jobsearch/features/scrapers/companyscrapers"
 )
 
-func ScrapeJobs(scrapers []JobScraper) {
-	if scrapers == nil {
-		scrapers = []JobScraper{
+func ScrapeJobs(options ScraperOptions) {
+	if options.Scrapers == nil {
+		options.Scrapers = []JobScraper{
 			//ScraperFindJobs{}, Finds too many unrelated matches
 			ScraperGlassdoorJobs{},
 			ScraperGoogleJobs{},
@@ -20,17 +20,17 @@ func ScrapeJobs(scrapers []JobScraper) {
 			ScraperZipRecruiter{},
 		}
 	}
-	options := ScraperOptions{
-		Search:        "React Developer",
-		Location:      "Durham, NC",
-		DaysSincePost: 1,
-		OverrideOpts: map[enum.ScraperName]ScraperOptions{
+	if options.OverrideOpts == nil {
+		options.OverrideOpts = map[enum.ScraperName]ScraperOptions{
 			enum.Glassdoor: {
 				Url: "https://www.glassdoor.com/Job/durham-react-developer-jobs-SRCH_IL.0,6_IC1138697_KO7,22.htm?",
 			},
-		},
+		}
 	}
-	for _, scraper := range scrapers {
+	if options.DaysSincePost == 0 {
+		options.DaysSincePost = 1
+	}
+	for _, scraper := range options.Scrapers {
 		fmt.Println("Starting scraper:", scraper.Name())
 		for _, job := range scraper.Scrape(options) {
 			var persistedCompany model.Company

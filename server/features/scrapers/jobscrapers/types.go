@@ -17,6 +17,7 @@ type ScraperOptions struct {
 	DaysSincePost int
 	Url           string
 	OverrideOpts  map[enum.ScraperName]ScraperOptions
+	Scrapers      []JobScraper
 }
 
 type ScraperConfig struct {
