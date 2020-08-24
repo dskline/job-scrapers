@@ -1,15 +1,25 @@
 package api
 
 import (
-	"encoding/json"
 	"github.com/dskline/jobsearch/features/scrapers/jobscrapers"
+	"github.com/gin-gonic/gin"
 	"net/http"
 )
 
-func scrapeJobs(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(http.StatusOK)
-	var scraperOptions jobscrapers.ScraperOptions
-	_ = json.NewDecoder(r.Body).Decode(&scraperOptions)
-	jobscrapers.ScrapeJobs(scraperOptions)
+type ScrapeJobsOptions struct {
+	Search   string `json:"searchTerm"`
+	Location string `json:"location"`
+}
+
+func scrapeJobs(c *gin.Context) {
+	var body ScrapeJobsOptions
+	if err := c.ShouldBindJSON(&body); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+	jobscrapers.ScrapeJobs(jobscrapers.ScraperOptions{
+		Search:   body.Search,
+		Location: body.Location,
+	})
+	c.JSON(http.StatusOK, gin.H{"message": "done"})
 }

@@ -30,6 +30,7 @@ func ScrapeJobs(options ScraperOptions) {
 	if options.DaysSincePost == 0 {
 		options.DaysSincePost = 1
 	}
+	fmt.Println(options)
 	for _, scraper := range options.Scrapers {
 		fmt.Println("Starting scraper:", scraper.Name())
 		for _, job := range scraper.Scrape(options) {

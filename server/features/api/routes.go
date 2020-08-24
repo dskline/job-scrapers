@@ -1,21 +1,16 @@
 package api
 
 import (
-	"fmt"
-	"log"
-	"net/http"
-
-	"github.com/gorilla/mux"
+	"github.com/gin-gonic/gin"
 )
 
 func ConfigureRoutes() {
-	r := mux.NewRouter()
-
-	api := r.PathPrefix("/api/v1").Subrouter()
-	api.HandleFunc("/jobs/scrape", scrapeJobs).Methods(http.MethodPost)
-	api.HandleFunc("/companies/{companyId}/setIgnoreFlag", ignoreCompany).Methods(http.MethodPost)
-	api.HandleFunc("/companies/{companyId}/requestUpdate", updateCompany).Methods(http.MethodPost)
-
-	fmt.Println("Server started")
-	log.Fatal(http.ListenAndServe(":9000", r))
+	router := gin.Default()
+	v1 := router.Group("/api/v1")
+	{
+		v1.POST("/jobs/scrape", scrapeJobs)
+		v1.POST("/companies/:companyId/setIgnoreFlag", ignoreCompany)
+		v1.POST("/companies/:companyId/requestUpdate", updateCompany)
+	}
+	router.Run(":9000")
 }
