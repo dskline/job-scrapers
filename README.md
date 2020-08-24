@@ -32,6 +32,8 @@ The API is written in Go, as is all the web scrapers for each job site. This wil
 
 Data is stored in Postgres and retrieved with GraphQL APIs using Hasura.
 
+> Development: To setup Hasura, first migrate the database by running the server. Then, open Hasura console and go through the settings to integrate the postgres database.
+
 #### Web App
 
 Data is viewed through a web app written in NextJS (SSR) and Tailwind (CSS).
