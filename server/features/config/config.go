@@ -12,7 +12,10 @@ func init() {
 	}
 }
 
-func Get(key string) string {
+func Get(key string, defaultValue string) string {
 	var value, _ = os.LookupEnv(key)
+	if value == "" {
+	    return defaultValue
+	}
 	return value
 }

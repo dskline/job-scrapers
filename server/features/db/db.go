@@ -11,7 +11,7 @@ var db *gorm.DB
 
 func Connect() {
 	var err error
-	db, err = gorm.Open("postgres", config.Get("ORM_POSTGRESQL_OPTIONS"))
+	db, err = gorm.Open("postgres", config.Get("ORM_POSTGRESQL_OPTIONS", "host=localhost port=5432 user=postgres dbname=jobs password=docker sslmode=disable"))
 	if err != nil {
 		panic(err)
 	}
