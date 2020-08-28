@@ -32,10 +32,7 @@ const GlassdoorDetails: FC<Props> = (props) => (
         </div>
       )}
     </div>
-    <div
-      className='flex content-center justify-center z-10 relative'
-      style={{ top: '-1rem' }}
-    >
+    <div className='flex content-center justify-center z-10 relative' style={{ top: '-1rem' }}>
       <div className='flex border rounded px-4 bg-white'>
         <div className='text-green-600 font-extrabold text-right my-auto mr-2'>
           {props.company.rating}
