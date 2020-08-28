@@ -19,7 +19,7 @@ module.exports = withPlugins({
       {
         test: /\.graphql$/,
         exclude: /node_modules/,
-        use: 'raw-loader',
+        use: 'graphql-tag/loader',
       },
       {
         test: /\.svg$/,

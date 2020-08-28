@@ -4,6 +4,11 @@
     "default": "http://localhost:8080/v1/graphql",
     "env": "GRAPHQL_ENDPOINT"
   },
+  "gqlWebSocketEndpoint": {
+    "doc": "The primary graphql endpoint for database operations",
+    "default": "ws://localhost:8080/v1/graphql",
+    "env": "GRAPHQL_WS_ENDPOINT"
+  },
   "serverEndpoint": {
     "doc": "The endpoint for server operations",
     "default": "http://localhost:9000/api/v1",

@@ -1,5 +1,7 @@
 import { PayloadAction } from '@reduxjs/toolkit'
 
+import { JobsOrderBy } from 'src/@types/generated/graphql'
+
 export type Company = {
   id: string,
   name: string,
@@ -16,34 +18,30 @@ export type Job = {
   url: string
 };
 
-export type JobListQueryResponse = {
-  jobs: Array<Job>
-};
 export type JobListQueryOptions = {
   date: string,
-  orderBy: {
-    company?: {
-      rating?: 'asc' | 'desc'
-    },
-    scraper?: 'asc' | 'desc'
-  }
+  orderBy: JobsOrderBy
 };
 
 export type JobListSliceState = {
   queryOptions: JobListQueryOptions,
   isLoading: boolean,
-  jobs?: Job[],
+  isAutoRefreshEnabled?: boolean,
+  webSocketUpdateMessage?: string,
+  jobs: Job[],
+  refreshedJobs?: Job[],
   categorizedJobs?: { [keys: string]: Job[] },
-  isJobsCategorizedFlag: boolean,
   jobMenuOpened?: string, // job.url
   companyStagedForIgnore?: Company // job.company
 };
 export type JobListSliceReducers = {
+  setJobs: (state: JobListSliceState, action: PayloadAction<Job[]>) => void,
+  updateJobsFromWebSocket: (state: JobListSliceState) => void,
   assignQueryOptions: (
     state: JobListSliceState,
     action: PayloadAction<Partial<JobListQueryOptions>>
   ) => void,
-  toggleIsJobsCategorizedFlag: (state: JobListSliceState) => void,
   setJobMenuOpened: (state: JobListSliceState, action: PayloadAction<string>) => void,
-  setCompanyStagedForIgnore: (state: JobListSliceState, action: PayloadAction<Company>) => void
+  setCompanyStagedForIgnore: (state: JobListSliceState, action: PayloadAction<Company>) => void,
+  ignoreCompany: (state: JobListSliceState, action: PayloadAction<Company>) => void
 };

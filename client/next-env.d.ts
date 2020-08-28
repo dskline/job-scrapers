@@ -3,7 +3,9 @@
 
 declare module '*.graphql' {
   import { DocumentNode } from 'graphql'
-  export default typeof DocumentNode
+  const Schema: DocumentNode
+
+  export = Schema;
 }
 declare module '*.svg' {
   const content: React.FunctionComponent<React.SVGAttributes<SVGElement>>

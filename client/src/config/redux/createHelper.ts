@@ -17,7 +17,7 @@ export const createAppSlice = <T, Reducers extends SliceCaseReducers<T>>({
   name: string,
   initialState: T,
   reducers: ValidateSliceCaseReducers<T, Reducers>,
-  extraReducers: (builder: ActionReducerMapBuilder<NoInfer<T>>) => void
+  extraReducers?: (builder: ActionReducerMapBuilder<NoInfer<T>>) => void
 }) =>
     createSlice({
       name,
