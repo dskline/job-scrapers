@@ -1,6 +1,7 @@
 import { OrderBy } from 'src/@types/generated/graphql'
 import { createAppSlice } from 'src/config/redux/createHelper'
-import { Job, JobListSliceReducers, JobListSliceState } from 'src/features/core/JobList/types'
+import { Job } from 'src/features/core/JobList/api/graphql/types'
+import { JobListSliceReducers, JobListSliceState } from 'src/features/core/JobList/store/types'
 
 const jobListSlice = createAppSlice<JobListSliceState, JobListSliceReducers>({
   name: 'jobList',
@@ -8,6 +9,8 @@ const jobListSlice = createAppSlice<JobListSliceState, JobListSliceReducers>({
     isLoading: true,
     isAutoRefreshEnabled: true,
     jobs: [],
+    categorizedJobs: {},
+    sortedScraperKeysByNumberOfJobs: [],
     queryOptions: {
       date: new Date().toISOString().split('T')[0],
       orderBy: {
@@ -19,8 +22,7 @@ const jobListSlice = createAppSlice<JobListSliceState, JobListSliceReducers>({
     setJobs (state, action): void {
       if (state.isLoading || state.isAutoRefreshEnabled) {
         // Set initial jobs
-        state.jobs = action.payload
-        state.categorizedJobs = categorizeJobsByScraper(state.jobs)
+        Object.assign(state, setJobs(action.payload))
         state.isLoading = false
       } else {
         // Subsequent web socket data updates should be queued up for refreshing
@@ -35,8 +37,7 @@ const jobListSlice = createAppSlice<JobListSliceState, JobListSliceReducers>({
     },
     updateJobsFromWebSocket (state): void {
       state.webSocketUpdateMessage = undefined
-      state.jobs = state.refreshedJobs
-      state.categorizedJobs = categorizeJobsByScraper(state.jobs)
+      Object.assign(state, setJobs(state.refreshedJobs))
     },
     assignQueryOptions (state, action): void {
       state.isLoading = true
@@ -50,8 +51,10 @@ const jobListSlice = createAppSlice<JobListSliceState, JobListSliceReducers>({
     },
     ignoreCompany (state, action): void {
       state.companyStagedForIgnore = undefined
-      state.jobs = state.jobs.filter((job) => job.company.id !== action.payload.id)
-      state.categorizedJobs = categorizeJobsByScraper(state.jobs)
+      Object.assign(
+        state,
+        setJobs(state.jobs.filter((job) => job.company.id !== action.payload.id))
+      )
       fetch(`/api/companies/${action.payload.id}/setIgnoreFlag`, {
         method: 'POST',
       })
@@ -59,8 +62,8 @@ const jobListSlice = createAppSlice<JobListSliceState, JobListSliceReducers>({
   },
 })
 
-function categorizeJobsByScraper (jobs: Job[]): { [keys: string]: Job[] } {
-  return jobs.reduce((previousValue, currentValue) => {
+function setJobs (jobs: Job[]): Partial<JobListSliceState> {
+  const categorizedJobs = jobs.reduce((previousValue, currentValue) => {
     if (!previousValue[currentValue.scraper]) {
       previousValue[currentValue.scraper] = [currentValue]
     } else {
@@ -68,6 +71,14 @@ function categorizeJobsByScraper (jobs: Job[]): { [keys: string]: Job[] } {
     }
     return previousValue
   }, {})
+
+  return {
+    jobs,
+    categorizedJobs,
+    sortedScraperKeysByNumberOfJobs: Object.keys(categorizedJobs).sort(
+      (a, b) => categorizedJobs[b].length - categorizedJobs[a].length
+    ),
+  }
 }
 
 export const JOBLIST_ACTIONS = { ...jobListSlice.actions }

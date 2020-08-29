@@ -1,39 +1,25 @@
 import { PayloadAction } from '@reduxjs/toolkit'
 
-import { JobsOrderBy } from 'src/@types/generated/graphql'
-
-export type Company = {
-  id: string,
-  name: string,
-  industry: string,
-  rating: number,
-  ratingHtml: string,
-  glassdoorUrl: string
-};
-
-export type Job = {
-  company: Company,
-  title: string,
-  scraper: string,
-  url: string
-};
-
-export type JobListQueryOptions = {
-  date: string,
-  orderBy: JobsOrderBy
-};
+import { Company, Job, JobListQueryOptions } from 'src/features/core/JobList/api/graphql/types'
 
 export type JobListSliceState = {
+  // Initial API state
   queryOptions: JobListQueryOptions,
   isLoading: boolean,
+  // API result
+  jobs: Job[],
+  // Web Socket state
   isAutoRefreshEnabled?: boolean,
   webSocketUpdateMessage?: string,
-  jobs: Job[],
   refreshedJobs?: Job[],
-  categorizedJobs?: { [keys: string]: Job[] },
+  // Sorted API result
+  categorizedJobs: { [keys: string]: Job[] },
+  sortedScraperKeysByNumberOfJobs: string[],
+  // User toggles
   jobMenuOpened?: string, // job.url
   companyStagedForIgnore?: Company // job.company
 };
+
 export type JobListSliceReducers = {
   setJobs: (state: JobListSliceState, action: PayloadAction<Job[]>) => void,
   updateJobsFromWebSocket: (state: JobListSliceState) => void,

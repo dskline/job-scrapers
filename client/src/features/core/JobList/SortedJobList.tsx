@@ -2,8 +2,7 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 
 import { RootState } from 'src/config/redux/store'
-import JobCard from 'src/features/core/JobList/JobCard/JobCard'
-import ScraperStats from 'src/features/core/JobList/ScraperStats'
+import JobCard from 'src/features/core/JobList/JobCard'
 
 function SortedJobList (): React.ReactElement {
   const { categorizedJobs: jobsByScrapers } = useSelector((state: RootState) => state.jobList)
@@ -11,9 +10,7 @@ function SortedJobList (): React.ReactElement {
     (a, b) => jobsByScrapers[b].length - jobsByScrapers[a].length
   )
   return (
-    <>
-      <hr />
-      <ScraperStats sortedScraperKeys={sortedScraperKeys} />
+    <div>
       {sortedScraperKeys.map((scraper) => (
         <div key={`scraperJobs${scraper}`} id={scraper} className='mb-12'>
           <a href={`#${scraper}`}>
@@ -26,7 +23,7 @@ function SortedJobList (): React.ReactElement {
           ))}
         </div>
       ))}
-    </>
+    </div>
   )
 }
 

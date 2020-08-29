@@ -4,9 +4,9 @@ import VerticalDotsIcon from 'heroicons/solid/dots-vertical.svg'
 import OfficeBuildingIcon from 'heroicons/solid/office-building.svg'
 
 import { RootState, useAppDispatch } from 'src/config/redux/store'
+import { Job } from 'src/features/core/JobList/api/graphql/types'
 import GlassdoorDetails from 'src/features/core/JobList/JobCard/GlassdoorDetails'
 import { JOBLIST_ACTIONS } from 'src/features/core/JobList/store'
-import { Job } from 'src/features/core/JobList/types'
 
 type JobCardProps = {
   job: Job
