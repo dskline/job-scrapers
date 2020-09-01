@@ -1,7 +1,7 @@
-import { OrderBy } from 'src/@types/generated/graphql'
 import { createAppSlice } from 'src/config/redux/createHelper'
 import { Job } from 'src/features/core/JobList/api/graphql/types'
 import { JobListSliceReducers, JobListSliceState } from 'src/features/core/JobList/store/types'
+import { OrderBy } from 'src/features/integrations/graphql/types'
 
 const jobListSlice = createAppSlice<JobListSliceState, JobListSliceReducers>({
   name: 'jobList',

@@ -1,4 +1,4 @@
-import { JobsOrderBy } from 'src/@types/generated/graphql'
+import { JobsOrderBy } from 'src/features/integrations/graphql/types'
 
 export type Company = {
   id: string,
