@@ -12,7 +12,7 @@ export const createAppSlice = <T, Reducers extends SliceCaseReducers<T>>({
   name,
   initialState,
   reducers,
-  extraReducers
+  extraReducers,
 }: {
   name: string,
   initialState: T,
@@ -29,5 +29,5 @@ export const createAppSlice = <T, Reducers extends SliceCaseReducers<T>>({
         }),
         ...reducers,
       },
-      extraReducers
+      extraReducers,
     })

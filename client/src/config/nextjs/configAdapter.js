@@ -6,8 +6,8 @@ const convict = require('convict')
 const defaultConfig = require('../default.json')
 
 class NextConfigAdapter {
-  publicConfig
-  privateConfig
+  publicConfig;
+  privateConfig;
 
   constructor () {
     const config = convict(defaultConfig)

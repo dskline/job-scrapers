@@ -1,9 +1,9 @@
 import React, { FC } from 'react'
+import ws from 'isomorphic-ws'
 import { withUrqlClient } from 'next-urql'
 import { AppProps } from 'next/app'
 import { SubscriptionClient } from 'subscriptions-transport-ws'
 import { defaultExchanges, subscriptionExchange } from 'urql'
-import ws from 'isomorphic-ws'
 
 import config from 'src/config'
 import { store } from 'src/config/redux/store'

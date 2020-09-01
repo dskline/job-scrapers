@@ -19,8 +19,10 @@ const Navbar: FC = () => {
               />
             </div>
             <div className='hidden md:block'>
-              <div className='ml-10 flex items-baseline
-              '>
+              <div
+                className='ml-10 flex items-baseline
+              '
+              >
                 <NavLink href='/'>Dashboard</NavLink>
                 <NavLink className='ml-4' href='/settings'>
                   Settings

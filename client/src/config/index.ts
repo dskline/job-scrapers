@@ -2,11 +2,11 @@ import getConfig from 'next/config'
 
 const config: Config = {
   public: {
-    ...getConfig().publicRuntimeConfig
+    ...getConfig().publicRuntimeConfig,
     // -- hot reload variables --
   },
   private: {
-    ...getConfig().serverRuntimeConfig
+    ...getConfig().serverRuntimeConfig,
     // -- hot reload variables --
   },
 }

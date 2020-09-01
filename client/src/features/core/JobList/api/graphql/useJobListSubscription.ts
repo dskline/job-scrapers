@@ -2,7 +2,7 @@
 import { useSubscription } from 'urql'
 
 import query from 'src/features/core/JobList/api/graphql/JobListSubscription.graphql'
-import { JobListQueryOptions } from 'src/features/core/JobList/types'
+import { JobListQueryOptions } from 'src/features/core/JobList/api/graphql/types'
 
 export const useJobListSubscription = (options: JobListQueryOptions, onReceiveData) => {
   const datePlusOne = new Date(options.date)

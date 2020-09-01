@@ -13,110 +13,106 @@ export type Scalars = {
 
 /** expression to compare columns of type Int. All fields are combined with logical 'AND'. */
 export type IntComparisonExp = {
-  _eq?: Maybe<Scalars['Int']>;
-  _gt?: Maybe<Scalars['Int']>;
-  _gte?: Maybe<Scalars['Int']>;
-  _in?: Maybe<Array<Scalars['Int']>>;
-  _is_null?: Maybe<Scalars['Boolean']>;
-  _lt?: Maybe<Scalars['Int']>;
-  _lte?: Maybe<Scalars['Int']>;
-  _neq?: Maybe<Scalars['Int']>;
-  _nin?: Maybe<Array<Scalars['Int']>>;
+  _eq?: Maybe<Scalars["Int"]>;
+  _gt?: Maybe<Scalars["Int"]>;
+  _gte?: Maybe<Scalars["Int"]>;
+  _in?: Maybe<Array<Scalars["Int"]>>;
+  _is_null?: Maybe<Scalars["Boolean"]>;
+  _lt?: Maybe<Scalars["Int"]>;
+  _lte?: Maybe<Scalars["Int"]>;
+  _neq?: Maybe<Scalars["Int"]>;
+  _nin?: Maybe<Array<Scalars["Int"]>>;
 };
 
 /** expression to compare columns of type String. All fields are combined with logical 'AND'. */
 export type StringComparisonExp = {
-  _eq?: Maybe<Scalars['String']>;
-  _gt?: Maybe<Scalars['String']>;
-  _gte?: Maybe<Scalars['String']>;
-  _ilike?: Maybe<Scalars['String']>;
-  _in?: Maybe<Array<Scalars['String']>>;
-  _is_null?: Maybe<Scalars['Boolean']>;
-  _like?: Maybe<Scalars['String']>;
-  _lt?: Maybe<Scalars['String']>;
-  _lte?: Maybe<Scalars['String']>;
-  _neq?: Maybe<Scalars['String']>;
-  _nilike?: Maybe<Scalars['String']>;
-  _nin?: Maybe<Array<Scalars['String']>>;
-  _nlike?: Maybe<Scalars['String']>;
-  _nsimilar?: Maybe<Scalars['String']>;
-  _similar?: Maybe<Scalars['String']>;
+  _eq?: Maybe<Scalars["String"]>;
+  _gt?: Maybe<Scalars["String"]>;
+  _gte?: Maybe<Scalars["String"]>;
+  _ilike?: Maybe<Scalars["String"]>;
+  _in?: Maybe<Array<Scalars["String"]>>;
+  _is_null?: Maybe<Scalars["Boolean"]>;
+  _like?: Maybe<Scalars["String"]>;
+  _lt?: Maybe<Scalars["String"]>;
+  _lte?: Maybe<Scalars["String"]>;
+  _neq?: Maybe<Scalars["String"]>;
+  _nilike?: Maybe<Scalars["String"]>;
+  _nin?: Maybe<Array<Scalars["String"]>>;
+  _nlike?: Maybe<Scalars["String"]>;
+  _nsimilar?: Maybe<Scalars["String"]>;
+  _similar?: Maybe<Scalars["String"]>;
 };
 
 /** columns and relationships of "companies" */
 export type Companies = {
-  __typename?: 'companies';
-  company_name?: Maybe<Scalars['String']>;
-  created_at?: Maybe<Scalars['timestamptz']>;
-  deleted_at?: Maybe<Scalars['timestamptz']>;
-  glassdoor_url?: Maybe<Scalars['String']>;
-  id: Scalars['Int'];
-  industry?: Maybe<Scalars['String']>;
+  __typename?: "companies";
+  company_name?: Maybe<Scalars["String"]>;
+  created_at?: Maybe<Scalars["timestamptz"]>;
+  deleted_at?: Maybe<Scalars["timestamptz"]>;
+  glassdoor_url?: Maybe<Scalars["String"]>;
+  id: Scalars["Int"];
+  industry?: Maybe<Scalars["String"]>;
   /** An array relationship */
   jobs: Array<Jobs>;
   /** An aggregated array relationship */
   jobs_aggregate: JobsAggregate;
-  rating?: Maybe<Scalars['numeric']>;
-  rating_html?: Maybe<Scalars['String']>;
-  updated_at?: Maybe<Scalars['timestamptz']>;
+  rating?: Maybe<Scalars["numeric"]>;
+  rating_html?: Maybe<Scalars["String"]>;
+  updated_at?: Maybe<Scalars["timestamptz"]>;
   /** An array relationship */
   user_ignores: Array<UserIgnores>;
   /** An aggregated array relationship */
   user_ignores_aggregate: UserIgnoresAggregate;
 };
 
-
 /** columns and relationships of "companies" */
 export type CompaniesJobsArgs = {
   distinct_on?: Maybe<Array<JobsSelectColumn>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
+  limit?: Maybe<Scalars["Int"]>;
+  offset?: Maybe<Scalars["Int"]>;
   order_by?: Maybe<Array<JobsOrderBy>>;
   where?: Maybe<JobsBoolExp>;
 };
-
 
 /** columns and relationships of "companies" */
 export type CompaniesJobsAggregateArgs = {
   distinct_on?: Maybe<Array<JobsSelectColumn>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
+  limit?: Maybe<Scalars["Int"]>;
+  offset?: Maybe<Scalars["Int"]>;
   order_by?: Maybe<Array<JobsOrderBy>>;
   where?: Maybe<JobsBoolExp>;
 };
 
-
 /** columns and relationships of "companies" */
 export type CompaniesUserIgnoresArgs = {
   distinct_on?: Maybe<Array<UserIgnoresSelectColumn>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
+  limit?: Maybe<Scalars["Int"]>;
+  offset?: Maybe<Scalars["Int"]>;
   order_by?: Maybe<Array<UserIgnoresOrderBy>>;
   where?: Maybe<UserIgnoresBoolExp>;
 };
 
-
 /** columns and relationships of "companies" */
 export type CompaniesUserIgnoresAggregateArgs = {
   distinct_on?: Maybe<Array<UserIgnoresSelectColumn>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
+  limit?: Maybe<Scalars["Int"]>;
+  offset?: Maybe<Scalars["Int"]>;
   order_by?: Maybe<Array<UserIgnoresOrderBy>>;
   where?: Maybe<UserIgnoresBoolExp>;
 };
 
 /** aggregated selection of "companies" */
 export type CompaniesAggregate = {
-  __typename?: 'companies_aggregate';
+  __typename?: "companies_aggregate";
   aggregate?: Maybe<CompaniesAggregateFields>;
   nodes: Array<Companies>;
 };
 
 /** aggregate fields of "companies" */
 export type CompaniesAggregateFields = {
-  __typename?: 'companies_aggregate_fields';
+  __typename?: "companies_aggregate_fields";
   avg?: Maybe<CompaniesAvgFields>;
-  count?: Maybe<Scalars['Int']>;
+  count?: Maybe<Scalars["Int"]>;
   max?: Maybe<CompaniesMaxFields>;
   min?: Maybe<CompaniesMinFields>;
   stddev?: Maybe<CompaniesStddevFields>;
@@ -128,11 +124,10 @@ export type CompaniesAggregateFields = {
   variance?: Maybe<CompaniesVarianceFields>;
 };
 
-
 /** aggregate fields of "companies" */
 export type CompaniesAggregateFieldsCountArgs = {
   columns?: Maybe<Array<CompaniesSelectColumn>>;
-  distinct?: Maybe<Scalars['Boolean']>;
+  distinct?: Maybe<Scalars["Boolean"]>;
 };
 
 /** order by aggregate values of table "companies" */
@@ -158,9 +153,9 @@ export type CompaniesArrRelInsertInput = {
 
 /** aggregate avg on columns */
 export type CompaniesAvgFields = {
-  __typename?: 'companies_avg_fields';
-  id?: Maybe<Scalars['Float']>;
-  rating?: Maybe<Scalars['Float']>;
+  __typename?: "companies_avg_fields";
+  id?: Maybe<Scalars["Float"]>;
+  rating?: Maybe<Scalars["Float"]>;
 };
 
 /** order by avg() on columns of table "companies" */
@@ -190,42 +185,42 @@ export type CompaniesBoolExp = {
 /** unique or primary key constraints on table "companies" */
 export enum CompaniesConstraint {
   /** unique or primary key constraint */
-  CompaniesPkey = 'companies_pkey'
+  CompaniesPkey = "companies_pkey",
 }
 
 /** input type for incrementing integer column in table "companies" */
 export type CompaniesIncInput = {
-  id?: Maybe<Scalars['Int']>;
-  rating?: Maybe<Scalars['numeric']>;
+  id?: Maybe<Scalars["Int"]>;
+  rating?: Maybe<Scalars["numeric"]>;
 };
 
 /** input type for inserting data into table "companies" */
 export type CompaniesInsertInput = {
-  company_name?: Maybe<Scalars['String']>;
-  created_at?: Maybe<Scalars['timestamptz']>;
-  deleted_at?: Maybe<Scalars['timestamptz']>;
-  glassdoor_url?: Maybe<Scalars['String']>;
-  id?: Maybe<Scalars['Int']>;
-  industry?: Maybe<Scalars['String']>;
+  company_name?: Maybe<Scalars["String"]>;
+  created_at?: Maybe<Scalars["timestamptz"]>;
+  deleted_at?: Maybe<Scalars["timestamptz"]>;
+  glassdoor_url?: Maybe<Scalars["String"]>;
+  id?: Maybe<Scalars["Int"]>;
+  industry?: Maybe<Scalars["String"]>;
   jobs?: Maybe<JobsArrRelInsertInput>;
-  rating?: Maybe<Scalars['numeric']>;
-  rating_html?: Maybe<Scalars['String']>;
-  updated_at?: Maybe<Scalars['timestamptz']>;
+  rating?: Maybe<Scalars["numeric"]>;
+  rating_html?: Maybe<Scalars["String"]>;
+  updated_at?: Maybe<Scalars["timestamptz"]>;
   user_ignores?: Maybe<UserIgnoresArrRelInsertInput>;
 };
 
 /** aggregate max on columns */
 export type CompaniesMaxFields = {
-  __typename?: 'companies_max_fields';
-  company_name?: Maybe<Scalars['String']>;
-  created_at?: Maybe<Scalars['timestamptz']>;
-  deleted_at?: Maybe<Scalars['timestamptz']>;
-  glassdoor_url?: Maybe<Scalars['String']>;
-  id?: Maybe<Scalars['Int']>;
-  industry?: Maybe<Scalars['String']>;
-  rating?: Maybe<Scalars['numeric']>;
-  rating_html?: Maybe<Scalars['String']>;
-  updated_at?: Maybe<Scalars['timestamptz']>;
+  __typename?: "companies_max_fields";
+  company_name?: Maybe<Scalars["String"]>;
+  created_at?: Maybe<Scalars["timestamptz"]>;
+  deleted_at?: Maybe<Scalars["timestamptz"]>;
+  glassdoor_url?: Maybe<Scalars["String"]>;
+  id?: Maybe<Scalars["Int"]>;
+  industry?: Maybe<Scalars["String"]>;
+  rating?: Maybe<Scalars["numeric"]>;
+  rating_html?: Maybe<Scalars["String"]>;
+  updated_at?: Maybe<Scalars["timestamptz"]>;
 };
 
 /** order by max() on columns of table "companies" */
@@ -243,16 +238,16 @@ export type CompaniesMaxOrderBy = {
 
 /** aggregate min on columns */
 export type CompaniesMinFields = {
-  __typename?: 'companies_min_fields';
-  company_name?: Maybe<Scalars['String']>;
-  created_at?: Maybe<Scalars['timestamptz']>;
-  deleted_at?: Maybe<Scalars['timestamptz']>;
-  glassdoor_url?: Maybe<Scalars['String']>;
-  id?: Maybe<Scalars['Int']>;
-  industry?: Maybe<Scalars['String']>;
-  rating?: Maybe<Scalars['numeric']>;
-  rating_html?: Maybe<Scalars['String']>;
-  updated_at?: Maybe<Scalars['timestamptz']>;
+  __typename?: "companies_min_fields";
+  company_name?: Maybe<Scalars["String"]>;
+  created_at?: Maybe<Scalars["timestamptz"]>;
+  deleted_at?: Maybe<Scalars["timestamptz"]>;
+  glassdoor_url?: Maybe<Scalars["String"]>;
+  id?: Maybe<Scalars["Int"]>;
+  industry?: Maybe<Scalars["String"]>;
+  rating?: Maybe<Scalars["numeric"]>;
+  rating_html?: Maybe<Scalars["String"]>;
+  updated_at?: Maybe<Scalars["timestamptz"]>;
 };
 
 /** order by min() on columns of table "companies" */
@@ -270,9 +265,9 @@ export type CompaniesMinOrderBy = {
 
 /** response of any mutation on the table "companies" */
 export type CompaniesMutationResponse = {
-  __typename?: 'companies_mutation_response';
+  __typename?: "companies_mutation_response";
   /** number of affected rows by the mutation */
-  affected_rows: Scalars['Int'];
+  affected_rows: Scalars["Int"];
   /** data of the affected rows by the mutation */
   returning: Array<Companies>;
 };
@@ -307,49 +302,49 @@ export type CompaniesOrderBy = {
 
 /** primary key columns input for table: "companies" */
 export type CompaniesPkColumnsInput = {
-  id: Scalars['Int'];
+  id: Scalars["Int"];
 };
 
 /** select columns of table "companies" */
 export enum CompaniesSelectColumn {
   /** column name */
-  CompanyName = 'company_name',
+  CompanyName = "company_name",
   /** column name */
-  CreatedAt = 'created_at',
+  CreatedAt = "created_at",
   /** column name */
-  DeletedAt = 'deleted_at',
+  DeletedAt = "deleted_at",
   /** column name */
-  GlassdoorUrl = 'glassdoor_url',
+  GlassdoorUrl = "glassdoor_url",
   /** column name */
-  Id = 'id',
+  Id = "id",
   /** column name */
-  Industry = 'industry',
+  Industry = "industry",
   /** column name */
-  Rating = 'rating',
+  Rating = "rating",
   /** column name */
-  RatingHtml = 'rating_html',
+  RatingHtml = "rating_html",
   /** column name */
-  UpdatedAt = 'updated_at'
+  UpdatedAt = "updated_at",
 }
 
 /** input type for updating data in table "companies" */
 export type CompaniesSetInput = {
-  company_name?: Maybe<Scalars['String']>;
-  created_at?: Maybe<Scalars['timestamptz']>;
-  deleted_at?: Maybe<Scalars['timestamptz']>;
-  glassdoor_url?: Maybe<Scalars['String']>;
-  id?: Maybe<Scalars['Int']>;
-  industry?: Maybe<Scalars['String']>;
-  rating?: Maybe<Scalars['numeric']>;
-  rating_html?: Maybe<Scalars['String']>;
-  updated_at?: Maybe<Scalars['timestamptz']>;
+  company_name?: Maybe<Scalars["String"]>;
+  created_at?: Maybe<Scalars["timestamptz"]>;
+  deleted_at?: Maybe<Scalars["timestamptz"]>;
+  glassdoor_url?: Maybe<Scalars["String"]>;
+  id?: Maybe<Scalars["Int"]>;
+  industry?: Maybe<Scalars["String"]>;
+  rating?: Maybe<Scalars["numeric"]>;
+  rating_html?: Maybe<Scalars["String"]>;
+  updated_at?: Maybe<Scalars["timestamptz"]>;
 };
 
 /** aggregate stddev on columns */
 export type CompaniesStddevFields = {
-  __typename?: 'companies_stddev_fields';
-  id?: Maybe<Scalars['Float']>;
-  rating?: Maybe<Scalars['Float']>;
+  __typename?: "companies_stddev_fields";
+  id?: Maybe<Scalars["Float"]>;
+  rating?: Maybe<Scalars["Float"]>;
 };
 
 /** order by stddev() on columns of table "companies" */
@@ -360,9 +355,9 @@ export type CompaniesStddevOrderBy = {
 
 /** aggregate stddev_pop on columns */
 export type CompaniesStddevPopFields = {
-  __typename?: 'companies_stddev_pop_fields';
-  id?: Maybe<Scalars['Float']>;
-  rating?: Maybe<Scalars['Float']>;
+  __typename?: "companies_stddev_pop_fields";
+  id?: Maybe<Scalars["Float"]>;
+  rating?: Maybe<Scalars["Float"]>;
 };
 
 /** order by stddev_pop() on columns of table "companies" */
@@ -373,9 +368,9 @@ export type CompaniesStddevPopOrderBy = {
 
 /** aggregate stddev_samp on columns */
 export type CompaniesStddevSampFields = {
-  __typename?: 'companies_stddev_samp_fields';
-  id?: Maybe<Scalars['Float']>;
-  rating?: Maybe<Scalars['Float']>;
+  __typename?: "companies_stddev_samp_fields";
+  id?: Maybe<Scalars["Float"]>;
+  rating?: Maybe<Scalars["Float"]>;
 };
 
 /** order by stddev_samp() on columns of table "companies" */
@@ -386,9 +381,9 @@ export type CompaniesStddevSampOrderBy = {
 
 /** aggregate sum on columns */
 export type CompaniesSumFields = {
-  __typename?: 'companies_sum_fields';
-  id?: Maybe<Scalars['Int']>;
-  rating?: Maybe<Scalars['numeric']>;
+  __typename?: "companies_sum_fields";
+  id?: Maybe<Scalars["Int"]>;
+  rating?: Maybe<Scalars["numeric"]>;
 };
 
 /** order by sum() on columns of table "companies" */
@@ -400,30 +395,30 @@ export type CompaniesSumOrderBy = {
 /** update columns of table "companies" */
 export enum CompaniesUpdateColumn {
   /** column name */
-  CompanyName = 'company_name',
+  CompanyName = "company_name",
   /** column name */
-  CreatedAt = 'created_at',
+  CreatedAt = "created_at",
   /** column name */
-  DeletedAt = 'deleted_at',
+  DeletedAt = "deleted_at",
   /** column name */
-  GlassdoorUrl = 'glassdoor_url',
+  GlassdoorUrl = "glassdoor_url",
   /** column name */
-  Id = 'id',
+  Id = "id",
   /** column name */
-  Industry = 'industry',
+  Industry = "industry",
   /** column name */
-  Rating = 'rating',
+  Rating = "rating",
   /** column name */
-  RatingHtml = 'rating_html',
+  RatingHtml = "rating_html",
   /** column name */
-  UpdatedAt = 'updated_at'
+  UpdatedAt = "updated_at",
 }
 
 /** aggregate var_pop on columns */
 export type CompaniesVarPopFields = {
-  __typename?: 'companies_var_pop_fields';
-  id?: Maybe<Scalars['Float']>;
-  rating?: Maybe<Scalars['Float']>;
+  __typename?: "companies_var_pop_fields";
+  id?: Maybe<Scalars["Float"]>;
+  rating?: Maybe<Scalars["Float"]>;
 };
 
 /** order by var_pop() on columns of table "companies" */
@@ -434,9 +429,9 @@ export type CompaniesVarPopOrderBy = {
 
 /** aggregate var_samp on columns */
 export type CompaniesVarSampFields = {
-  __typename?: 'companies_var_samp_fields';
-  id?: Maybe<Scalars['Float']>;
-  rating?: Maybe<Scalars['Float']>;
+  __typename?: "companies_var_samp_fields";
+  id?: Maybe<Scalars["Float"]>;
+  rating?: Maybe<Scalars["Float"]>;
 };
 
 /** order by var_samp() on columns of table "companies" */
@@ -447,9 +442,9 @@ export type CompaniesVarSampOrderBy = {
 
 /** aggregate variance on columns */
 export type CompaniesVarianceFields = {
-  __typename?: 'companies_variance_fields';
-  id?: Maybe<Scalars['Float']>;
-  rating?: Maybe<Scalars['Float']>;
+  __typename?: "companies_variance_fields";
+  id?: Maybe<Scalars["Float"]>;
+  rating?: Maybe<Scalars["Float"]>;
 };
 
 /** order by variance() on columns of table "companies" */
@@ -460,33 +455,33 @@ export type CompaniesVarianceOrderBy = {
 
 /** columns and relationships of "jobs" */
 export type Jobs = {
-  __typename?: 'jobs';
+  __typename?: "jobs";
   /** An object relationship */
   company?: Maybe<Companies>;
-  company_id?: Maybe<Scalars['Int']>;
-  created_at?: Maybe<Scalars['timestamptz']>;
-  deleted_at?: Maybe<Scalars['timestamptz']>;
-  description: Scalars['String'];
-  description_html: Scalars['String'];
-  id: Scalars['Int'];
-  scraper?: Maybe<Scalars['String']>;
-  title: Scalars['String'];
-  updated_at?: Maybe<Scalars['timestamptz']>;
-  url: Scalars['String'];
+  company_id?: Maybe<Scalars["Int"]>;
+  created_at?: Maybe<Scalars["timestamptz"]>;
+  deleted_at?: Maybe<Scalars["timestamptz"]>;
+  description: Scalars["String"];
+  description_html: Scalars["String"];
+  id: Scalars["Int"];
+  scraper?: Maybe<Scalars["String"]>;
+  title: Scalars["String"];
+  updated_at?: Maybe<Scalars["timestamptz"]>;
+  url: Scalars["String"];
 };
 
 /** aggregated selection of "jobs" */
 export type JobsAggregate = {
-  __typename?: 'jobs_aggregate';
+  __typename?: "jobs_aggregate";
   aggregate?: Maybe<JobsAggregateFields>;
   nodes: Array<Jobs>;
 };
 
 /** aggregate fields of "jobs" */
 export type JobsAggregateFields = {
-  __typename?: 'jobs_aggregate_fields';
+  __typename?: "jobs_aggregate_fields";
   avg?: Maybe<JobsAvgFields>;
-  count?: Maybe<Scalars['Int']>;
+  count?: Maybe<Scalars["Int"]>;
   max?: Maybe<JobsMaxFields>;
   min?: Maybe<JobsMinFields>;
   stddev?: Maybe<JobsStddevFields>;
@@ -498,11 +493,10 @@ export type JobsAggregateFields = {
   variance?: Maybe<JobsVarianceFields>;
 };
 
-
 /** aggregate fields of "jobs" */
 export type JobsAggregateFieldsCountArgs = {
   columns?: Maybe<Array<JobsSelectColumn>>;
-  distinct?: Maybe<Scalars['Boolean']>;
+  distinct?: Maybe<Scalars["Boolean"]>;
 };
 
 /** order by aggregate values of table "jobs" */
@@ -528,9 +522,9 @@ export type JobsArrRelInsertInput = {
 
 /** aggregate avg on columns */
 export type JobsAvgFields = {
-  __typename?: 'jobs_avg_fields';
-  company_id?: Maybe<Scalars['Float']>;
-  id?: Maybe<Scalars['Float']>;
+  __typename?: "jobs_avg_fields";
+  company_id?: Maybe<Scalars["Float"]>;
+  id?: Maybe<Scalars["Float"]>;
 };
 
 /** order by avg() on columns of table "jobs" */
@@ -560,45 +554,45 @@ export type JobsBoolExp = {
 /** unique or primary key constraints on table "jobs" */
 export enum JobsConstraint {
   /** unique or primary key constraint */
-  JobsPkey = 'jobs_pkey',
+  JobsPkey = "jobs_pkey",
   /** unique or primary key constraint */
-  JobsUrlKey = 'jobs_url_key'
+  JobsUrlKey = "jobs_url_key",
 }
 
 /** input type for incrementing integer column in table "jobs" */
 export type JobsIncInput = {
-  company_id?: Maybe<Scalars['Int']>;
-  id?: Maybe<Scalars['Int']>;
+  company_id?: Maybe<Scalars["Int"]>;
+  id?: Maybe<Scalars["Int"]>;
 };
 
 /** input type for inserting data into table "jobs" */
 export type JobsInsertInput = {
   company?: Maybe<CompaniesObjRelInsertInput>;
-  company_id?: Maybe<Scalars['Int']>;
-  created_at?: Maybe<Scalars['timestamptz']>;
-  deleted_at?: Maybe<Scalars['timestamptz']>;
-  description?: Maybe<Scalars['String']>;
-  description_html?: Maybe<Scalars['String']>;
-  id?: Maybe<Scalars['Int']>;
-  scraper?: Maybe<Scalars['String']>;
-  title?: Maybe<Scalars['String']>;
-  updated_at?: Maybe<Scalars['timestamptz']>;
-  url?: Maybe<Scalars['String']>;
+  company_id?: Maybe<Scalars["Int"]>;
+  created_at?: Maybe<Scalars["timestamptz"]>;
+  deleted_at?: Maybe<Scalars["timestamptz"]>;
+  description?: Maybe<Scalars["String"]>;
+  description_html?: Maybe<Scalars["String"]>;
+  id?: Maybe<Scalars["Int"]>;
+  scraper?: Maybe<Scalars["String"]>;
+  title?: Maybe<Scalars["String"]>;
+  updated_at?: Maybe<Scalars["timestamptz"]>;
+  url?: Maybe<Scalars["String"]>;
 };
 
 /** aggregate max on columns */
 export type JobsMaxFields = {
-  __typename?: 'jobs_max_fields';
-  company_id?: Maybe<Scalars['Int']>;
-  created_at?: Maybe<Scalars['timestamptz']>;
-  deleted_at?: Maybe<Scalars['timestamptz']>;
-  description?: Maybe<Scalars['String']>;
-  description_html?: Maybe<Scalars['String']>;
-  id?: Maybe<Scalars['Int']>;
-  scraper?: Maybe<Scalars['String']>;
-  title?: Maybe<Scalars['String']>;
-  updated_at?: Maybe<Scalars['timestamptz']>;
-  url?: Maybe<Scalars['String']>;
+  __typename?: "jobs_max_fields";
+  company_id?: Maybe<Scalars["Int"]>;
+  created_at?: Maybe<Scalars["timestamptz"]>;
+  deleted_at?: Maybe<Scalars["timestamptz"]>;
+  description?: Maybe<Scalars["String"]>;
+  description_html?: Maybe<Scalars["String"]>;
+  id?: Maybe<Scalars["Int"]>;
+  scraper?: Maybe<Scalars["String"]>;
+  title?: Maybe<Scalars["String"]>;
+  updated_at?: Maybe<Scalars["timestamptz"]>;
+  url?: Maybe<Scalars["String"]>;
 };
 
 /** order by max() on columns of table "jobs" */
@@ -617,17 +611,17 @@ export type JobsMaxOrderBy = {
 
 /** aggregate min on columns */
 export type JobsMinFields = {
-  __typename?: 'jobs_min_fields';
-  company_id?: Maybe<Scalars['Int']>;
-  created_at?: Maybe<Scalars['timestamptz']>;
-  deleted_at?: Maybe<Scalars['timestamptz']>;
-  description?: Maybe<Scalars['String']>;
-  description_html?: Maybe<Scalars['String']>;
-  id?: Maybe<Scalars['Int']>;
-  scraper?: Maybe<Scalars['String']>;
-  title?: Maybe<Scalars['String']>;
-  updated_at?: Maybe<Scalars['timestamptz']>;
-  url?: Maybe<Scalars['String']>;
+  __typename?: "jobs_min_fields";
+  company_id?: Maybe<Scalars["Int"]>;
+  created_at?: Maybe<Scalars["timestamptz"]>;
+  deleted_at?: Maybe<Scalars["timestamptz"]>;
+  description?: Maybe<Scalars["String"]>;
+  description_html?: Maybe<Scalars["String"]>;
+  id?: Maybe<Scalars["Int"]>;
+  scraper?: Maybe<Scalars["String"]>;
+  title?: Maybe<Scalars["String"]>;
+  updated_at?: Maybe<Scalars["timestamptz"]>;
+  url?: Maybe<Scalars["String"]>;
 };
 
 /** order by min() on columns of table "jobs" */
@@ -646,9 +640,9 @@ export type JobsMinOrderBy = {
 
 /** response of any mutation on the table "jobs" */
 export type JobsMutationResponse = {
-  __typename?: 'jobs_mutation_response';
+  __typename?: "jobs_mutation_response";
   /** number of affected rows by the mutation */
-  affected_rows: Scalars['Int'];
+  affected_rows: Scalars["Int"];
   /** data of the affected rows by the mutation */
   returning: Array<Jobs>;
 };
@@ -683,52 +677,52 @@ export type JobsOrderBy = {
 
 /** primary key columns input for table: "jobs" */
 export type JobsPkColumnsInput = {
-  id: Scalars['Int'];
+  id: Scalars["Int"];
 };
 
 /** select columns of table "jobs" */
 export enum JobsSelectColumn {
   /** column name */
-  CompanyId = 'company_id',
+  CompanyId = "company_id",
   /** column name */
-  CreatedAt = 'created_at',
+  CreatedAt = "created_at",
   /** column name */
-  DeletedAt = 'deleted_at',
+  DeletedAt = "deleted_at",
   /** column name */
-  Description = 'description',
+  Description = "description",
   /** column name */
-  DescriptionHtml = 'description_html',
+  DescriptionHtml = "description_html",
   /** column name */
-  Id = 'id',
+  Id = "id",
   /** column name */
-  Scraper = 'scraper',
+  Scraper = "scraper",
   /** column name */
-  Title = 'title',
+  Title = "title",
   /** column name */
-  UpdatedAt = 'updated_at',
+  UpdatedAt = "updated_at",
   /** column name */
-  Url = 'url'
+  Url = "url",
 }
 
 /** input type for updating data in table "jobs" */
 export type JobsSetInput = {
-  company_id?: Maybe<Scalars['Int']>;
-  created_at?: Maybe<Scalars['timestamptz']>;
-  deleted_at?: Maybe<Scalars['timestamptz']>;
-  description?: Maybe<Scalars['String']>;
-  description_html?: Maybe<Scalars['String']>;
-  id?: Maybe<Scalars['Int']>;
-  scraper?: Maybe<Scalars['String']>;
-  title?: Maybe<Scalars['String']>;
-  updated_at?: Maybe<Scalars['timestamptz']>;
-  url?: Maybe<Scalars['String']>;
+  company_id?: Maybe<Scalars["Int"]>;
+  created_at?: Maybe<Scalars["timestamptz"]>;
+  deleted_at?: Maybe<Scalars["timestamptz"]>;
+  description?: Maybe<Scalars["String"]>;
+  description_html?: Maybe<Scalars["String"]>;
+  id?: Maybe<Scalars["Int"]>;
+  scraper?: Maybe<Scalars["String"]>;
+  title?: Maybe<Scalars["String"]>;
+  updated_at?: Maybe<Scalars["timestamptz"]>;
+  url?: Maybe<Scalars["String"]>;
 };
 
 /** aggregate stddev on columns */
 export type JobsStddevFields = {
-  __typename?: 'jobs_stddev_fields';
-  company_id?: Maybe<Scalars['Float']>;
-  id?: Maybe<Scalars['Float']>;
+  __typename?: "jobs_stddev_fields";
+  company_id?: Maybe<Scalars["Float"]>;
+  id?: Maybe<Scalars["Float"]>;
 };
 
 /** order by stddev() on columns of table "jobs" */
@@ -739,9 +733,9 @@ export type JobsStddevOrderBy = {
 
 /** aggregate stddev_pop on columns */
 export type JobsStddevPopFields = {
-  __typename?: 'jobs_stddev_pop_fields';
-  company_id?: Maybe<Scalars['Float']>;
-  id?: Maybe<Scalars['Float']>;
+  __typename?: "jobs_stddev_pop_fields";
+  company_id?: Maybe<Scalars["Float"]>;
+  id?: Maybe<Scalars["Float"]>;
 };
 
 /** order by stddev_pop() on columns of table "jobs" */
@@ -752,9 +746,9 @@ export type JobsStddevPopOrderBy = {
 
 /** aggregate stddev_samp on columns */
 export type JobsStddevSampFields = {
-  __typename?: 'jobs_stddev_samp_fields';
-  company_id?: Maybe<Scalars['Float']>;
-  id?: Maybe<Scalars['Float']>;
+  __typename?: "jobs_stddev_samp_fields";
+  company_id?: Maybe<Scalars["Float"]>;
+  id?: Maybe<Scalars["Float"]>;
 };
 
 /** order by stddev_samp() on columns of table "jobs" */
@@ -765,9 +759,9 @@ export type JobsStddevSampOrderBy = {
 
 /** aggregate sum on columns */
 export type JobsSumFields = {
-  __typename?: 'jobs_sum_fields';
-  company_id?: Maybe<Scalars['Int']>;
-  id?: Maybe<Scalars['Int']>;
+  __typename?: "jobs_sum_fields";
+  company_id?: Maybe<Scalars["Int"]>;
+  id?: Maybe<Scalars["Int"]>;
 };
 
 /** order by sum() on columns of table "jobs" */
@@ -779,32 +773,32 @@ export type JobsSumOrderBy = {
 /** update columns of table "jobs" */
 export enum JobsUpdateColumn {
   /** column name */
-  CompanyId = 'company_id',
+  CompanyId = "company_id",
   /** column name */
-  CreatedAt = 'created_at',
+  CreatedAt = "created_at",
   /** column name */
-  DeletedAt = 'deleted_at',
+  DeletedAt = "deleted_at",
   /** column name */
-  Description = 'description',
+  Description = "description",
   /** column name */
-  DescriptionHtml = 'description_html',
+  DescriptionHtml = "description_html",
   /** column name */
-  Id = 'id',
+  Id = "id",
   /** column name */
-  Scraper = 'scraper',
+  Scraper = "scraper",
   /** column name */
-  Title = 'title',
+  Title = "title",
   /** column name */
-  UpdatedAt = 'updated_at',
+  UpdatedAt = "updated_at",
   /** column name */
-  Url = 'url'
+  Url = "url",
 }
 
 /** aggregate var_pop on columns */
 export type JobsVarPopFields = {
-  __typename?: 'jobs_var_pop_fields';
-  company_id?: Maybe<Scalars['Float']>;
-  id?: Maybe<Scalars['Float']>;
+  __typename?: "jobs_var_pop_fields";
+  company_id?: Maybe<Scalars["Float"]>;
+  id?: Maybe<Scalars["Float"]>;
 };
 
 /** order by var_pop() on columns of table "jobs" */
@@ -815,9 +809,9 @@ export type JobsVarPopOrderBy = {
 
 /** aggregate var_samp on columns */
 export type JobsVarSampFields = {
-  __typename?: 'jobs_var_samp_fields';
-  company_id?: Maybe<Scalars['Float']>;
-  id?: Maybe<Scalars['Float']>;
+  __typename?: "jobs_var_samp_fields";
+  company_id?: Maybe<Scalars["Float"]>;
+  id?: Maybe<Scalars["Float"]>;
 };
 
 /** order by var_samp() on columns of table "jobs" */
@@ -828,9 +822,9 @@ export type JobsVarSampOrderBy = {
 
 /** aggregate variance on columns */
 export type JobsVarianceFields = {
-  __typename?: 'jobs_variance_fields';
-  company_id?: Maybe<Scalars['Float']>;
-  id?: Maybe<Scalars['Float']>;
+  __typename?: "jobs_variance_fields";
+  company_id?: Maybe<Scalars["Float"]>;
+  id?: Maybe<Scalars["Float"]>;
 };
 
 /** order by variance() on columns of table "jobs" */
@@ -841,7 +835,7 @@ export type JobsVarianceOrderBy = {
 
 /** mutation root */
 export type MutationRoot = {
-  __typename?: 'mutation_root';
+  __typename?: "mutation_root";
   /** delete data from the table: "companies" */
   delete_companies?: Maybe<CompaniesMutationResponse>;
   /** delete single row from the table: "companies" */
@@ -892,54 +886,45 @@ export type MutationRoot = {
   update_users_by_pk?: Maybe<Users>;
 };
 
-
 /** mutation root */
 export type MutationRootDeleteCompaniesArgs = {
   where: CompaniesBoolExp;
 };
 
-
 /** mutation root */
 export type MutationRootDeleteCompaniesByPkArgs = {
-  id: Scalars['Int'];
+  id: Scalars["Int"];
 };
-
 
 /** mutation root */
 export type MutationRootDeleteJobsArgs = {
   where: JobsBoolExp;
 };
 
-
 /** mutation root */
 export type MutationRootDeleteJobsByPkArgs = {
-  id: Scalars['Int'];
+  id: Scalars["Int"];
 };
-
 
 /** mutation root */
 export type MutationRootDeleteUserIgnoresArgs = {
   where: UserIgnoresBoolExp;
 };
 
-
 /** mutation root */
 export type MutationRootDeleteUserIgnoresByPkArgs = {
-  id: Scalars['Int'];
+  id: Scalars["Int"];
 };
-
 
 /** mutation root */
 export type MutationRootDeleteUsersArgs = {
   where: UsersBoolExp;
 };
 
-
 /** mutation root */
 export type MutationRootDeleteUsersByPkArgs = {
-  id: Scalars['Int'];
+  id: Scalars["Int"];
 };
-
 
 /** mutation root */
 export type MutationRootInsertCompaniesArgs = {
@@ -947,13 +932,11 @@ export type MutationRootInsertCompaniesArgs = {
   on_conflict?: Maybe<CompaniesOnConflict>;
 };
 
-
 /** mutation root */
 export type MutationRootInsertCompaniesOneArgs = {
   object: CompaniesInsertInput;
   on_conflict?: Maybe<CompaniesOnConflict>;
 };
-
 
 /** mutation root */
 export type MutationRootInsertJobsArgs = {
@@ -961,13 +944,11 @@ export type MutationRootInsertJobsArgs = {
   on_conflict?: Maybe<JobsOnConflict>;
 };
 
-
 /** mutation root */
 export type MutationRootInsertJobsOneArgs = {
   object: JobsInsertInput;
   on_conflict?: Maybe<JobsOnConflict>;
 };
-
 
 /** mutation root */
 export type MutationRootInsertUserIgnoresArgs = {
@@ -975,13 +956,11 @@ export type MutationRootInsertUserIgnoresArgs = {
   on_conflict?: Maybe<UserIgnoresOnConflict>;
 };
 
-
 /** mutation root */
 export type MutationRootInsertUserIgnoresOneArgs = {
   object: UserIgnoresInsertInput;
   on_conflict?: Maybe<UserIgnoresOnConflict>;
 };
-
 
 /** mutation root */
 export type MutationRootInsertUsersArgs = {
@@ -989,13 +968,11 @@ export type MutationRootInsertUsersArgs = {
   on_conflict?: Maybe<UsersOnConflict>;
 };
 
-
 /** mutation root */
 export type MutationRootInsertUsersOneArgs = {
   object: UsersInsertInput;
   on_conflict?: Maybe<UsersOnConflict>;
 };
-
 
 /** mutation root */
 export type MutationRootUpdateCompaniesArgs = {
@@ -1004,14 +981,12 @@ export type MutationRootUpdateCompaniesArgs = {
   where: CompaniesBoolExp;
 };
 
-
 /** mutation root */
 export type MutationRootUpdateCompaniesByPkArgs = {
   _inc?: Maybe<CompaniesIncInput>;
   _set?: Maybe<CompaniesSetInput>;
   pk_columns: CompaniesPkColumnsInput;
 };
-
 
 /** mutation root */
 export type MutationRootUpdateJobsArgs = {
@@ -1020,14 +995,12 @@ export type MutationRootUpdateJobsArgs = {
   where: JobsBoolExp;
 };
 
-
 /** mutation root */
 export type MutationRootUpdateJobsByPkArgs = {
   _inc?: Maybe<JobsIncInput>;
   _set?: Maybe<JobsSetInput>;
   pk_columns: JobsPkColumnsInput;
 };
-
 
 /** mutation root */
 export type MutationRootUpdateUserIgnoresArgs = {
@@ -1036,14 +1009,12 @@ export type MutationRootUpdateUserIgnoresArgs = {
   where: UserIgnoresBoolExp;
 };
 
-
 /** mutation root */
 export type MutationRootUpdateUserIgnoresByPkArgs = {
   _inc?: Maybe<UserIgnoresIncInput>;
   _set?: Maybe<UserIgnoresSetInput>;
   pk_columns: UserIgnoresPkColumnsInput;
 };
-
 
 /** mutation root */
 export type MutationRootUpdateUsersArgs = {
@@ -1052,7 +1023,6 @@ export type MutationRootUpdateUsersArgs = {
   where: UsersBoolExp;
 };
 
-
 /** mutation root */
 export type MutationRootUpdateUsersByPkArgs = {
   _inc?: Maybe<UsersIncInput>;
@@ -1060,39 +1030,38 @@ export type MutationRootUpdateUsersByPkArgs = {
   pk_columns: UsersPkColumnsInput;
 };
 
-
 /** expression to compare columns of type numeric. All fields are combined with logical 'AND'. */
 export type NumericComparisonExp = {
-  _eq?: Maybe<Scalars['numeric']>;
-  _gt?: Maybe<Scalars['numeric']>;
-  _gte?: Maybe<Scalars['numeric']>;
-  _in?: Maybe<Array<Scalars['numeric']>>;
-  _is_null?: Maybe<Scalars['Boolean']>;
-  _lt?: Maybe<Scalars['numeric']>;
-  _lte?: Maybe<Scalars['numeric']>;
-  _neq?: Maybe<Scalars['numeric']>;
-  _nin?: Maybe<Array<Scalars['numeric']>>;
+  _eq?: Maybe<Scalars["numeric"]>;
+  _gt?: Maybe<Scalars["numeric"]>;
+  _gte?: Maybe<Scalars["numeric"]>;
+  _in?: Maybe<Array<Scalars["numeric"]>>;
+  _is_null?: Maybe<Scalars["Boolean"]>;
+  _lt?: Maybe<Scalars["numeric"]>;
+  _lte?: Maybe<Scalars["numeric"]>;
+  _neq?: Maybe<Scalars["numeric"]>;
+  _nin?: Maybe<Array<Scalars["numeric"]>>;
 };
 
 /** column ordering options */
 export enum OrderBy {
   /** in the ascending order, nulls last */
-  Asc = 'asc',
+  Asc = "asc",
   /** in the ascending order, nulls first */
-  AscNullsFirst = 'asc_nulls_first',
+  AscNullsFirst = "asc_nulls_first",
   /** in the ascending order, nulls last */
-  AscNullsLast = 'asc_nulls_last',
+  AscNullsLast = "asc_nulls_last",
   /** in the descending order, nulls first */
-  Desc = 'desc',
+  Desc = "desc",
   /** in the descending order, nulls first */
-  DescNullsFirst = 'desc_nulls_first',
+  DescNullsFirst = "desc_nulls_first",
   /** in the descending order, nulls last */
-  DescNullsLast = 'desc_nulls_last'
+  DescNullsLast = "desc_nulls_last",
 }
 
 /** query root */
 export type QueryRoot = {
-  __typename?: 'query_root';
+  __typename?: "query_root";
   /** fetch data from the table: "companies" */
   companies: Array<Companies>;
   /** fetch aggregated fields from the table: "companies" */
@@ -1118,114 +1087,102 @@ export type QueryRoot = {
   /** fetch data from the table: "users" using primary key columns */
   users_by_pk?: Maybe<Users>;
 };
-
 
 /** query root */
 export type QueryRootCompaniesArgs = {
   distinct_on?: Maybe<Array<CompaniesSelectColumn>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
+  limit?: Maybe<Scalars["Int"]>;
+  offset?: Maybe<Scalars["Int"]>;
   order_by?: Maybe<Array<CompaniesOrderBy>>;
   where?: Maybe<CompaniesBoolExp>;
 };
-
 
 /** query root */
 export type QueryRootCompaniesAggregateArgs = {
   distinct_on?: Maybe<Array<CompaniesSelectColumn>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
+  limit?: Maybe<Scalars["Int"]>;
+  offset?: Maybe<Scalars["Int"]>;
   order_by?: Maybe<Array<CompaniesOrderBy>>;
   where?: Maybe<CompaniesBoolExp>;
 };
 
-
 /** query root */
 export type QueryRootCompaniesByPkArgs = {
-  id: Scalars['Int'];
+  id: Scalars["Int"];
 };
-
 
 /** query root */
 export type QueryRootJobsArgs = {
   distinct_on?: Maybe<Array<JobsSelectColumn>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
+  limit?: Maybe<Scalars["Int"]>;
+  offset?: Maybe<Scalars["Int"]>;
   order_by?: Maybe<Array<JobsOrderBy>>;
   where?: Maybe<JobsBoolExp>;
 };
-
 
 /** query root */
 export type QueryRootJobsAggregateArgs = {
   distinct_on?: Maybe<Array<JobsSelectColumn>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
+  limit?: Maybe<Scalars["Int"]>;
+  offset?: Maybe<Scalars["Int"]>;
   order_by?: Maybe<Array<JobsOrderBy>>;
   where?: Maybe<JobsBoolExp>;
 };
 
-
 /** query root */
 export type QueryRootJobsByPkArgs = {
-  id: Scalars['Int'];
+  id: Scalars["Int"];
 };
-
 
 /** query root */
 export type QueryRootUserIgnoresArgs = {
   distinct_on?: Maybe<Array<UserIgnoresSelectColumn>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
+  limit?: Maybe<Scalars["Int"]>;
+  offset?: Maybe<Scalars["Int"]>;
   order_by?: Maybe<Array<UserIgnoresOrderBy>>;
   where?: Maybe<UserIgnoresBoolExp>;
 };
-
 
 /** query root */
 export type QueryRootUserIgnoresAggregateArgs = {
   distinct_on?: Maybe<Array<UserIgnoresSelectColumn>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
+  limit?: Maybe<Scalars["Int"]>;
+  offset?: Maybe<Scalars["Int"]>;
   order_by?: Maybe<Array<UserIgnoresOrderBy>>;
   where?: Maybe<UserIgnoresBoolExp>;
 };
 
-
 /** query root */
 export type QueryRootUserIgnoresByPkArgs = {
-  id: Scalars['Int'];
+  id: Scalars["Int"];
 };
-
 
 /** query root */
 export type QueryRootUsersArgs = {
   distinct_on?: Maybe<Array<UsersSelectColumn>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
+  limit?: Maybe<Scalars["Int"]>;
+  offset?: Maybe<Scalars["Int"]>;
   order_by?: Maybe<Array<UsersOrderBy>>;
   where?: Maybe<UsersBoolExp>;
 };
-
 
 /** query root */
 export type QueryRootUsersAggregateArgs = {
   distinct_on?: Maybe<Array<UsersSelectColumn>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
+  limit?: Maybe<Scalars["Int"]>;
+  offset?: Maybe<Scalars["Int"]>;
   order_by?: Maybe<Array<UsersOrderBy>>;
   where?: Maybe<UsersBoolExp>;
 };
 
-
 /** query root */
 export type QueryRootUsersByPkArgs = {
-  id: Scalars['Int'];
+  id: Scalars["Int"];
 };
 
 /** subscription root */
 export type SubscriptionRoot = {
-  __typename?: 'subscription_root';
+  __typename?: "subscription_root";
   /** fetch data from the table: "companies" */
   companies: Array<Companies>;
   /** fetch aggregated fields from the table: "companies" */
@@ -1252,151 +1209,138 @@ export type SubscriptionRoot = {
   users_by_pk?: Maybe<Users>;
 };
 
-
 /** subscription root */
 export type SubscriptionRootCompaniesArgs = {
   distinct_on?: Maybe<Array<CompaniesSelectColumn>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
+  limit?: Maybe<Scalars["Int"]>;
+  offset?: Maybe<Scalars["Int"]>;
   order_by?: Maybe<Array<CompaniesOrderBy>>;
   where?: Maybe<CompaniesBoolExp>;
 };
-
 
 /** subscription root */
 export type SubscriptionRootCompaniesAggregateArgs = {
   distinct_on?: Maybe<Array<CompaniesSelectColumn>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
+  limit?: Maybe<Scalars["Int"]>;
+  offset?: Maybe<Scalars["Int"]>;
   order_by?: Maybe<Array<CompaniesOrderBy>>;
   where?: Maybe<CompaniesBoolExp>;
 };
 
-
 /** subscription root */
 export type SubscriptionRootCompaniesByPkArgs = {
-  id: Scalars['Int'];
+  id: Scalars["Int"];
 };
-
 
 /** subscription root */
 export type SubscriptionRootJobsArgs = {
   distinct_on?: Maybe<Array<JobsSelectColumn>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
+  limit?: Maybe<Scalars["Int"]>;
+  offset?: Maybe<Scalars["Int"]>;
   order_by?: Maybe<Array<JobsOrderBy>>;
   where?: Maybe<JobsBoolExp>;
 };
-
 
 /** subscription root */
 export type SubscriptionRootJobsAggregateArgs = {
   distinct_on?: Maybe<Array<JobsSelectColumn>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
+  limit?: Maybe<Scalars["Int"]>;
+  offset?: Maybe<Scalars["Int"]>;
   order_by?: Maybe<Array<JobsOrderBy>>;
   where?: Maybe<JobsBoolExp>;
 };
 
-
 /** subscription root */
 export type SubscriptionRootJobsByPkArgs = {
-  id: Scalars['Int'];
+  id: Scalars["Int"];
 };
-
 
 /** subscription root */
 export type SubscriptionRootUserIgnoresArgs = {
   distinct_on?: Maybe<Array<UserIgnoresSelectColumn>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
+  limit?: Maybe<Scalars["Int"]>;
+  offset?: Maybe<Scalars["Int"]>;
   order_by?: Maybe<Array<UserIgnoresOrderBy>>;
   where?: Maybe<UserIgnoresBoolExp>;
 };
-
 
 /** subscription root */
 export type SubscriptionRootUserIgnoresAggregateArgs = {
   distinct_on?: Maybe<Array<UserIgnoresSelectColumn>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
+  limit?: Maybe<Scalars["Int"]>;
+  offset?: Maybe<Scalars["Int"]>;
   order_by?: Maybe<Array<UserIgnoresOrderBy>>;
   where?: Maybe<UserIgnoresBoolExp>;
 };
 
-
 /** subscription root */
 export type SubscriptionRootUserIgnoresByPkArgs = {
-  id: Scalars['Int'];
+  id: Scalars["Int"];
 };
-
 
 /** subscription root */
 export type SubscriptionRootUsersArgs = {
   distinct_on?: Maybe<Array<UsersSelectColumn>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
+  limit?: Maybe<Scalars["Int"]>;
+  offset?: Maybe<Scalars["Int"]>;
   order_by?: Maybe<Array<UsersOrderBy>>;
   where?: Maybe<UsersBoolExp>;
 };
-
 
 /** subscription root */
 export type SubscriptionRootUsersAggregateArgs = {
   distinct_on?: Maybe<Array<UsersSelectColumn>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
+  limit?: Maybe<Scalars["Int"]>;
+  offset?: Maybe<Scalars["Int"]>;
   order_by?: Maybe<Array<UsersOrderBy>>;
   where?: Maybe<UsersBoolExp>;
 };
 
-
 /** subscription root */
 export type SubscriptionRootUsersByPkArgs = {
-  id: Scalars['Int'];
+  id: Scalars["Int"];
 };
-
 
 /** expression to compare columns of type timestamptz. All fields are combined with logical 'AND'. */
 export type TimestamptzComparisonExp = {
-  _eq?: Maybe<Scalars['timestamptz']>;
-  _gt?: Maybe<Scalars['timestamptz']>;
-  _gte?: Maybe<Scalars['timestamptz']>;
-  _in?: Maybe<Array<Scalars['timestamptz']>>;
-  _is_null?: Maybe<Scalars['Boolean']>;
-  _lt?: Maybe<Scalars['timestamptz']>;
-  _lte?: Maybe<Scalars['timestamptz']>;
-  _neq?: Maybe<Scalars['timestamptz']>;
-  _nin?: Maybe<Array<Scalars['timestamptz']>>;
+  _eq?: Maybe<Scalars["timestamptz"]>;
+  _gt?: Maybe<Scalars["timestamptz"]>;
+  _gte?: Maybe<Scalars["timestamptz"]>;
+  _in?: Maybe<Array<Scalars["timestamptz"]>>;
+  _is_null?: Maybe<Scalars["Boolean"]>;
+  _lt?: Maybe<Scalars["timestamptz"]>;
+  _lte?: Maybe<Scalars["timestamptz"]>;
+  _neq?: Maybe<Scalars["timestamptz"]>;
+  _nin?: Maybe<Array<Scalars["timestamptz"]>>;
 };
 
 /** columns and relationships of "user_ignores" */
 export type UserIgnores = {
-  __typename?: 'user_ignores';
+  __typename?: "user_ignores";
   /** An object relationship */
   company?: Maybe<Companies>;
-  company_id?: Maybe<Scalars['Int']>;
-  created_at?: Maybe<Scalars['timestamptz']>;
-  deleted_at?: Maybe<Scalars['timestamptz']>;
-  id: Scalars['Int'];
-  updated_at?: Maybe<Scalars['timestamptz']>;
+  company_id?: Maybe<Scalars["Int"]>;
+  created_at?: Maybe<Scalars["timestamptz"]>;
+  deleted_at?: Maybe<Scalars["timestamptz"]>;
+  id: Scalars["Int"];
+  updated_at?: Maybe<Scalars["timestamptz"]>;
   /** An object relationship */
   user?: Maybe<Users>;
-  user_id?: Maybe<Scalars['Int']>;
+  user_id?: Maybe<Scalars["Int"]>;
 };
 
 /** aggregated selection of "user_ignores" */
 export type UserIgnoresAggregate = {
-  __typename?: 'user_ignores_aggregate';
+  __typename?: "user_ignores_aggregate";
   aggregate?: Maybe<UserIgnoresAggregateFields>;
   nodes: Array<UserIgnores>;
 };
 
 /** aggregate fields of "user_ignores" */
 export type UserIgnoresAggregateFields = {
-  __typename?: 'user_ignores_aggregate_fields';
+  __typename?: "user_ignores_aggregate_fields";
   avg?: Maybe<UserIgnoresAvgFields>;
-  count?: Maybe<Scalars['Int']>;
+  count?: Maybe<Scalars["Int"]>;
   max?: Maybe<UserIgnoresMaxFields>;
   min?: Maybe<UserIgnoresMinFields>;
   stddev?: Maybe<UserIgnoresStddevFields>;
@@ -1408,11 +1352,10 @@ export type UserIgnoresAggregateFields = {
   variance?: Maybe<UserIgnoresVarianceFields>;
 };
 
-
 /** aggregate fields of "user_ignores" */
 export type UserIgnoresAggregateFieldsCountArgs = {
   columns?: Maybe<Array<UserIgnoresSelectColumn>>;
-  distinct?: Maybe<Scalars['Boolean']>;
+  distinct?: Maybe<Scalars["Boolean"]>;
 };
 
 /** order by aggregate values of table "user_ignores" */
@@ -1438,10 +1381,10 @@ export type UserIgnoresArrRelInsertInput = {
 
 /** aggregate avg on columns */
 export type UserIgnoresAvgFields = {
-  __typename?: 'user_ignores_avg_fields';
-  company_id?: Maybe<Scalars['Float']>;
-  id?: Maybe<Scalars['Float']>;
-  user_id?: Maybe<Scalars['Float']>;
+  __typename?: "user_ignores_avg_fields";
+  company_id?: Maybe<Scalars["Float"]>;
+  id?: Maybe<Scalars["Float"]>;
+  user_id?: Maybe<Scalars["Float"]>;
 };
 
 /** order by avg() on columns of table "user_ignores" */
@@ -1469,37 +1412,37 @@ export type UserIgnoresBoolExp = {
 /** unique or primary key constraints on table "user_ignores" */
 export enum UserIgnoresConstraint {
   /** unique or primary key constraint */
-  UserIgnoresPkey = 'user_ignores_pkey'
+  UserIgnoresPkey = "user_ignores_pkey",
 }
 
 /** input type for incrementing integer column in table "user_ignores" */
 export type UserIgnoresIncInput = {
-  company_id?: Maybe<Scalars['Int']>;
-  id?: Maybe<Scalars['Int']>;
-  user_id?: Maybe<Scalars['Int']>;
+  company_id?: Maybe<Scalars["Int"]>;
+  id?: Maybe<Scalars["Int"]>;
+  user_id?: Maybe<Scalars["Int"]>;
 };
 
 /** input type for inserting data into table "user_ignores" */
 export type UserIgnoresInsertInput = {
   company?: Maybe<CompaniesObjRelInsertInput>;
-  company_id?: Maybe<Scalars['Int']>;
-  created_at?: Maybe<Scalars['timestamptz']>;
-  deleted_at?: Maybe<Scalars['timestamptz']>;
-  id?: Maybe<Scalars['Int']>;
-  updated_at?: Maybe<Scalars['timestamptz']>;
+  company_id?: Maybe<Scalars["Int"]>;
+  created_at?: Maybe<Scalars["timestamptz"]>;
+  deleted_at?: Maybe<Scalars["timestamptz"]>;
+  id?: Maybe<Scalars["Int"]>;
+  updated_at?: Maybe<Scalars["timestamptz"]>;
   user?: Maybe<UsersObjRelInsertInput>;
-  user_id?: Maybe<Scalars['Int']>;
+  user_id?: Maybe<Scalars["Int"]>;
 };
 
 /** aggregate max on columns */
 export type UserIgnoresMaxFields = {
-  __typename?: 'user_ignores_max_fields';
-  company_id?: Maybe<Scalars['Int']>;
-  created_at?: Maybe<Scalars['timestamptz']>;
-  deleted_at?: Maybe<Scalars['timestamptz']>;
-  id?: Maybe<Scalars['Int']>;
-  updated_at?: Maybe<Scalars['timestamptz']>;
-  user_id?: Maybe<Scalars['Int']>;
+  __typename?: "user_ignores_max_fields";
+  company_id?: Maybe<Scalars["Int"]>;
+  created_at?: Maybe<Scalars["timestamptz"]>;
+  deleted_at?: Maybe<Scalars["timestamptz"]>;
+  id?: Maybe<Scalars["Int"]>;
+  updated_at?: Maybe<Scalars["timestamptz"]>;
+  user_id?: Maybe<Scalars["Int"]>;
 };
 
 /** order by max() on columns of table "user_ignores" */
@@ -1514,13 +1457,13 @@ export type UserIgnoresMaxOrderBy = {
 
 /** aggregate min on columns */
 export type UserIgnoresMinFields = {
-  __typename?: 'user_ignores_min_fields';
-  company_id?: Maybe<Scalars['Int']>;
-  created_at?: Maybe<Scalars['timestamptz']>;
-  deleted_at?: Maybe<Scalars['timestamptz']>;
-  id?: Maybe<Scalars['Int']>;
-  updated_at?: Maybe<Scalars['timestamptz']>;
-  user_id?: Maybe<Scalars['Int']>;
+  __typename?: "user_ignores_min_fields";
+  company_id?: Maybe<Scalars["Int"]>;
+  created_at?: Maybe<Scalars["timestamptz"]>;
+  deleted_at?: Maybe<Scalars["timestamptz"]>;
+  id?: Maybe<Scalars["Int"]>;
+  updated_at?: Maybe<Scalars["timestamptz"]>;
+  user_id?: Maybe<Scalars["Int"]>;
 };
 
 /** order by min() on columns of table "user_ignores" */
@@ -1535,9 +1478,9 @@ export type UserIgnoresMinOrderBy = {
 
 /** response of any mutation on the table "user_ignores" */
 export type UserIgnoresMutationResponse = {
-  __typename?: 'user_ignores_mutation_response';
+  __typename?: "user_ignores_mutation_response";
   /** number of affected rows by the mutation */
-  affected_rows: Scalars['Int'];
+  affected_rows: Scalars["Int"];
   /** data of the affected rows by the mutation */
   returning: Array<UserIgnores>;
 };
@@ -1569,41 +1512,41 @@ export type UserIgnoresOrderBy = {
 
 /** primary key columns input for table: "user_ignores" */
 export type UserIgnoresPkColumnsInput = {
-  id: Scalars['Int'];
+  id: Scalars["Int"];
 };
 
 /** select columns of table "user_ignores" */
 export enum UserIgnoresSelectColumn {
   /** column name */
-  CompanyId = 'company_id',
+  CompanyId = "company_id",
   /** column name */
-  CreatedAt = 'created_at',
+  CreatedAt = "created_at",
   /** column name */
-  DeletedAt = 'deleted_at',
+  DeletedAt = "deleted_at",
   /** column name */
-  Id = 'id',
+  Id = "id",
   /** column name */
-  UpdatedAt = 'updated_at',
+  UpdatedAt = "updated_at",
   /** column name */
-  UserId = 'user_id'
+  UserId = "user_id",
 }
 
 /** input type for updating data in table "user_ignores" */
 export type UserIgnoresSetInput = {
-  company_id?: Maybe<Scalars['Int']>;
-  created_at?: Maybe<Scalars['timestamptz']>;
-  deleted_at?: Maybe<Scalars['timestamptz']>;
-  id?: Maybe<Scalars['Int']>;
-  updated_at?: Maybe<Scalars['timestamptz']>;
-  user_id?: Maybe<Scalars['Int']>;
+  company_id?: Maybe<Scalars["Int"]>;
+  created_at?: Maybe<Scalars["timestamptz"]>;
+  deleted_at?: Maybe<Scalars["timestamptz"]>;
+  id?: Maybe<Scalars["Int"]>;
+  updated_at?: Maybe<Scalars["timestamptz"]>;
+  user_id?: Maybe<Scalars["Int"]>;
 };
 
 /** aggregate stddev on columns */
 export type UserIgnoresStddevFields = {
-  __typename?: 'user_ignores_stddev_fields';
-  company_id?: Maybe<Scalars['Float']>;
-  id?: Maybe<Scalars['Float']>;
-  user_id?: Maybe<Scalars['Float']>;
+  __typename?: "user_ignores_stddev_fields";
+  company_id?: Maybe<Scalars["Float"]>;
+  id?: Maybe<Scalars["Float"]>;
+  user_id?: Maybe<Scalars["Float"]>;
 };
 
 /** order by stddev() on columns of table "user_ignores" */
@@ -1615,10 +1558,10 @@ export type UserIgnoresStddevOrderBy = {
 
 /** aggregate stddev_pop on columns */
 export type UserIgnoresStddevPopFields = {
-  __typename?: 'user_ignores_stddev_pop_fields';
-  company_id?: Maybe<Scalars['Float']>;
-  id?: Maybe<Scalars['Float']>;
-  user_id?: Maybe<Scalars['Float']>;
+  __typename?: "user_ignores_stddev_pop_fields";
+  company_id?: Maybe<Scalars["Float"]>;
+  id?: Maybe<Scalars["Float"]>;
+  user_id?: Maybe<Scalars["Float"]>;
 };
 
 /** order by stddev_pop() on columns of table "user_ignores" */
@@ -1630,10 +1573,10 @@ export type UserIgnoresStddevPopOrderBy = {
 
 /** aggregate stddev_samp on columns */
 export type UserIgnoresStddevSampFields = {
-  __typename?: 'user_ignores_stddev_samp_fields';
-  company_id?: Maybe<Scalars['Float']>;
-  id?: Maybe<Scalars['Float']>;
-  user_id?: Maybe<Scalars['Float']>;
+  __typename?: "user_ignores_stddev_samp_fields";
+  company_id?: Maybe<Scalars["Float"]>;
+  id?: Maybe<Scalars["Float"]>;
+  user_id?: Maybe<Scalars["Float"]>;
 };
 
 /** order by stddev_samp() on columns of table "user_ignores" */
@@ -1645,10 +1588,10 @@ export type UserIgnoresStddevSampOrderBy = {
 
 /** aggregate sum on columns */
 export type UserIgnoresSumFields = {
-  __typename?: 'user_ignores_sum_fields';
-  company_id?: Maybe<Scalars['Int']>;
-  id?: Maybe<Scalars['Int']>;
-  user_id?: Maybe<Scalars['Int']>;
+  __typename?: "user_ignores_sum_fields";
+  company_id?: Maybe<Scalars["Int"]>;
+  id?: Maybe<Scalars["Int"]>;
+  user_id?: Maybe<Scalars["Int"]>;
 };
 
 /** order by sum() on columns of table "user_ignores" */
@@ -1661,25 +1604,25 @@ export type UserIgnoresSumOrderBy = {
 /** update columns of table "user_ignores" */
 export enum UserIgnoresUpdateColumn {
   /** column name */
-  CompanyId = 'company_id',
+  CompanyId = "company_id",
   /** column name */
-  CreatedAt = 'created_at',
+  CreatedAt = "created_at",
   /** column name */
-  DeletedAt = 'deleted_at',
+  DeletedAt = "deleted_at",
   /** column name */
-  Id = 'id',
+  Id = "id",
   /** column name */
-  UpdatedAt = 'updated_at',
+  UpdatedAt = "updated_at",
   /** column name */
-  UserId = 'user_id'
+  UserId = "user_id",
 }
 
 /** aggregate var_pop on columns */
 export type UserIgnoresVarPopFields = {
-  __typename?: 'user_ignores_var_pop_fields';
-  company_id?: Maybe<Scalars['Float']>;
-  id?: Maybe<Scalars['Float']>;
-  user_id?: Maybe<Scalars['Float']>;
+  __typename?: "user_ignores_var_pop_fields";
+  company_id?: Maybe<Scalars["Float"]>;
+  id?: Maybe<Scalars["Float"]>;
+  user_id?: Maybe<Scalars["Float"]>;
 };
 
 /** order by var_pop() on columns of table "user_ignores" */
@@ -1691,10 +1634,10 @@ export type UserIgnoresVarPopOrderBy = {
 
 /** aggregate var_samp on columns */
 export type UserIgnoresVarSampFields = {
-  __typename?: 'user_ignores_var_samp_fields';
-  company_id?: Maybe<Scalars['Float']>;
-  id?: Maybe<Scalars['Float']>;
-  user_id?: Maybe<Scalars['Float']>;
+  __typename?: "user_ignores_var_samp_fields";
+  company_id?: Maybe<Scalars["Float"]>;
+  id?: Maybe<Scalars["Float"]>;
+  user_id?: Maybe<Scalars["Float"]>;
 };
 
 /** order by var_samp() on columns of table "user_ignores" */
@@ -1706,10 +1649,10 @@ export type UserIgnoresVarSampOrderBy = {
 
 /** aggregate variance on columns */
 export type UserIgnoresVarianceFields = {
-  __typename?: 'user_ignores_variance_fields';
-  company_id?: Maybe<Scalars['Float']>;
-  id?: Maybe<Scalars['Float']>;
-  user_id?: Maybe<Scalars['Float']>;
+  __typename?: "user_ignores_variance_fields";
+  company_id?: Maybe<Scalars["Float"]>;
+  id?: Maybe<Scalars["Float"]>;
+  user_id?: Maybe<Scalars["Float"]>;
 };
 
 /** order by variance() on columns of table "user_ignores" */
@@ -1721,50 +1664,48 @@ export type UserIgnoresVarianceOrderBy = {
 
 /** columns and relationships of "users" */
 export type Users = {
-  __typename?: 'users';
-  created_at?: Maybe<Scalars['timestamptz']>;
-  deleted_at?: Maybe<Scalars['timestamptz']>;
-  email?: Maybe<Scalars['String']>;
-  id: Scalars['Int'];
-  updated_at?: Maybe<Scalars['timestamptz']>;
+  __typename?: "users";
+  created_at?: Maybe<Scalars["timestamptz"]>;
+  deleted_at?: Maybe<Scalars["timestamptz"]>;
+  email?: Maybe<Scalars["String"]>;
+  id: Scalars["Int"];
+  updated_at?: Maybe<Scalars["timestamptz"]>;
   /** An array relationship */
   user_ignores: Array<UserIgnores>;
   /** An aggregated array relationship */
   user_ignores_aggregate: UserIgnoresAggregate;
 };
 
-
 /** columns and relationships of "users" */
 export type UsersUserIgnoresArgs = {
   distinct_on?: Maybe<Array<UserIgnoresSelectColumn>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
+  limit?: Maybe<Scalars["Int"]>;
+  offset?: Maybe<Scalars["Int"]>;
   order_by?: Maybe<Array<UserIgnoresOrderBy>>;
   where?: Maybe<UserIgnoresBoolExp>;
 };
 
-
 /** columns and relationships of "users" */
 export type UsersUserIgnoresAggregateArgs = {
   distinct_on?: Maybe<Array<UserIgnoresSelectColumn>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
+  limit?: Maybe<Scalars["Int"]>;
+  offset?: Maybe<Scalars["Int"]>;
   order_by?: Maybe<Array<UserIgnoresOrderBy>>;
   where?: Maybe<UserIgnoresBoolExp>;
 };
 
 /** aggregated selection of "users" */
 export type UsersAggregate = {
-  __typename?: 'users_aggregate';
+  __typename?: "users_aggregate";
   aggregate?: Maybe<UsersAggregateFields>;
   nodes: Array<Users>;
 };
 
 /** aggregate fields of "users" */
 export type UsersAggregateFields = {
-  __typename?: 'users_aggregate_fields';
+  __typename?: "users_aggregate_fields";
   avg?: Maybe<UsersAvgFields>;
-  count?: Maybe<Scalars['Int']>;
+  count?: Maybe<Scalars["Int"]>;
   max?: Maybe<UsersMaxFields>;
   min?: Maybe<UsersMinFields>;
   stddev?: Maybe<UsersStddevFields>;
@@ -1776,11 +1717,10 @@ export type UsersAggregateFields = {
   variance?: Maybe<UsersVarianceFields>;
 };
 
-
 /** aggregate fields of "users" */
 export type UsersAggregateFieldsCountArgs = {
   columns?: Maybe<Array<UsersSelectColumn>>;
-  distinct?: Maybe<Scalars['Boolean']>;
+  distinct?: Maybe<Scalars["Boolean"]>;
 };
 
 /** order by aggregate values of table "users" */
@@ -1806,8 +1746,8 @@ export type UsersArrRelInsertInput = {
 
 /** aggregate avg on columns */
 export type UsersAvgFields = {
-  __typename?: 'users_avg_fields';
-  id?: Maybe<Scalars['Float']>;
+  __typename?: "users_avg_fields";
+  id?: Maybe<Scalars["Float"]>;
 };
 
 /** order by avg() on columns of table "users" */
@@ -1831,32 +1771,32 @@ export type UsersBoolExp = {
 /** unique or primary key constraints on table "users" */
 export enum UsersConstraint {
   /** unique or primary key constraint */
-  UsersPkey = 'users_pkey'
+  UsersPkey = "users_pkey",
 }
 
 /** input type for incrementing integer column in table "users" */
 export type UsersIncInput = {
-  id?: Maybe<Scalars['Int']>;
+  id?: Maybe<Scalars["Int"]>;
 };
 
 /** input type for inserting data into table "users" */
 export type UsersInsertInput = {
-  created_at?: Maybe<Scalars['timestamptz']>;
-  deleted_at?: Maybe<Scalars['timestamptz']>;
-  email?: Maybe<Scalars['String']>;
-  id?: Maybe<Scalars['Int']>;
-  updated_at?: Maybe<Scalars['timestamptz']>;
+  created_at?: Maybe<Scalars["timestamptz"]>;
+  deleted_at?: Maybe<Scalars["timestamptz"]>;
+  email?: Maybe<Scalars["String"]>;
+  id?: Maybe<Scalars["Int"]>;
+  updated_at?: Maybe<Scalars["timestamptz"]>;
   user_ignores?: Maybe<UserIgnoresArrRelInsertInput>;
 };
 
 /** aggregate max on columns */
 export type UsersMaxFields = {
-  __typename?: 'users_max_fields';
-  created_at?: Maybe<Scalars['timestamptz']>;
-  deleted_at?: Maybe<Scalars['timestamptz']>;
-  email?: Maybe<Scalars['String']>;
-  id?: Maybe<Scalars['Int']>;
-  updated_at?: Maybe<Scalars['timestamptz']>;
+  __typename?: "users_max_fields";
+  created_at?: Maybe<Scalars["timestamptz"]>;
+  deleted_at?: Maybe<Scalars["timestamptz"]>;
+  email?: Maybe<Scalars["String"]>;
+  id?: Maybe<Scalars["Int"]>;
+  updated_at?: Maybe<Scalars["timestamptz"]>;
 };
 
 /** order by max() on columns of table "users" */
@@ -1870,12 +1810,12 @@ export type UsersMaxOrderBy = {
 
 /** aggregate min on columns */
 export type UsersMinFields = {
-  __typename?: 'users_min_fields';
-  created_at?: Maybe<Scalars['timestamptz']>;
-  deleted_at?: Maybe<Scalars['timestamptz']>;
-  email?: Maybe<Scalars['String']>;
-  id?: Maybe<Scalars['Int']>;
-  updated_at?: Maybe<Scalars['timestamptz']>;
+  __typename?: "users_min_fields";
+  created_at?: Maybe<Scalars["timestamptz"]>;
+  deleted_at?: Maybe<Scalars["timestamptz"]>;
+  email?: Maybe<Scalars["String"]>;
+  id?: Maybe<Scalars["Int"]>;
+  updated_at?: Maybe<Scalars["timestamptz"]>;
 };
 
 /** order by min() on columns of table "users" */
@@ -1889,9 +1829,9 @@ export type UsersMinOrderBy = {
 
 /** response of any mutation on the table "users" */
 export type UsersMutationResponse = {
-  __typename?: 'users_mutation_response';
+  __typename?: "users_mutation_response";
   /** number of affected rows by the mutation */
-  affected_rows: Scalars['Int'];
+  affected_rows: Scalars["Int"];
   /** data of the affected rows by the mutation */
   returning: Array<Users>;
 };
@@ -1921,36 +1861,36 @@ export type UsersOrderBy = {
 
 /** primary key columns input for table: "users" */
 export type UsersPkColumnsInput = {
-  id: Scalars['Int'];
+  id: Scalars["Int"];
 };
 
 /** select columns of table "users" */
 export enum UsersSelectColumn {
   /** column name */
-  CreatedAt = 'created_at',
+  CreatedAt = "created_at",
   /** column name */
-  DeletedAt = 'deleted_at',
+  DeletedAt = "deleted_at",
   /** column name */
-  Email = 'email',
+  Email = "email",
   /** column name */
-  Id = 'id',
+  Id = "id",
   /** column name */
-  UpdatedAt = 'updated_at'
+  UpdatedAt = "updated_at",
 }
 
 /** input type for updating data in table "users" */
 export type UsersSetInput = {
-  created_at?: Maybe<Scalars['timestamptz']>;
-  deleted_at?: Maybe<Scalars['timestamptz']>;
-  email?: Maybe<Scalars['String']>;
-  id?: Maybe<Scalars['Int']>;
-  updated_at?: Maybe<Scalars['timestamptz']>;
+  created_at?: Maybe<Scalars["timestamptz"]>;
+  deleted_at?: Maybe<Scalars["timestamptz"]>;
+  email?: Maybe<Scalars["String"]>;
+  id?: Maybe<Scalars["Int"]>;
+  updated_at?: Maybe<Scalars["timestamptz"]>;
 };
 
 /** aggregate stddev on columns */
 export type UsersStddevFields = {
-  __typename?: 'users_stddev_fields';
-  id?: Maybe<Scalars['Float']>;
+  __typename?: "users_stddev_fields";
+  id?: Maybe<Scalars["Float"]>;
 };
 
 /** order by stddev() on columns of table "users" */
@@ -1960,8 +1900,8 @@ export type UsersStddevOrderBy = {
 
 /** aggregate stddev_pop on columns */
 export type UsersStddevPopFields = {
-  __typename?: 'users_stddev_pop_fields';
-  id?: Maybe<Scalars['Float']>;
+  __typename?: "users_stddev_pop_fields";
+  id?: Maybe<Scalars["Float"]>;
 };
 
 /** order by stddev_pop() on columns of table "users" */
@@ -1971,8 +1911,8 @@ export type UsersStddevPopOrderBy = {
 
 /** aggregate stddev_samp on columns */
 export type UsersStddevSampFields = {
-  __typename?: 'users_stddev_samp_fields';
-  id?: Maybe<Scalars['Float']>;
+  __typename?: "users_stddev_samp_fields";
+  id?: Maybe<Scalars["Float"]>;
 };
 
 /** order by stddev_samp() on columns of table "users" */
@@ -1982,8 +1922,8 @@ export type UsersStddevSampOrderBy = {
 
 /** aggregate sum on columns */
 export type UsersSumFields = {
-  __typename?: 'users_sum_fields';
-  id?: Maybe<Scalars['Int']>;
+  __typename?: "users_sum_fields";
+  id?: Maybe<Scalars["Int"]>;
 };
 
 /** order by sum() on columns of table "users" */
@@ -1994,21 +1934,21 @@ export type UsersSumOrderBy = {
 /** update columns of table "users" */
 export enum UsersUpdateColumn {
   /** column name */
-  CreatedAt = 'created_at',
+  CreatedAt = "created_at",
   /** column name */
-  DeletedAt = 'deleted_at',
+  DeletedAt = "deleted_at",
   /** column name */
-  Email = 'email',
+  Email = "email",
   /** column name */
-  Id = 'id',
+  Id = "id",
   /** column name */
-  UpdatedAt = 'updated_at'
+  UpdatedAt = "updated_at",
 }
 
 /** aggregate var_pop on columns */
 export type UsersVarPopFields = {
-  __typename?: 'users_var_pop_fields';
-  id?: Maybe<Scalars['Float']>;
+  __typename?: "users_var_pop_fields";
+  id?: Maybe<Scalars["Float"]>;
 };
 
 /** order by var_pop() on columns of table "users" */
@@ -2018,8 +1958,8 @@ export type UsersVarPopOrderBy = {
 
 /** aggregate var_samp on columns */
 export type UsersVarSampFields = {
-  __typename?: 'users_var_samp_fields';
-  id?: Maybe<Scalars['Float']>;
+  __typename?: "users_var_samp_fields";
+  id?: Maybe<Scalars["Float"]>;
 };
 
 /** order by var_samp() on columns of table "users" */
@@ -2029,8 +1969,8 @@ export type UsersVarSampOrderBy = {
 
 /** aggregate variance on columns */
 export type UsersVarianceFields = {
-  __typename?: 'users_variance_fields';
-  id?: Maybe<Scalars['Float']>;
+  __typename?: "users_variance_fields";
+  id?: Maybe<Scalars["Float"]>;
 };
 
 /** order by variance() on columns of table "users" */

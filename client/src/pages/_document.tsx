@@ -11,9 +11,7 @@ class Document extends NextDocument {
     return (
       <Html lang='en'>
         <Head>
-          <Manifest
-            href='/manifest.json'
-          />
+          <Manifest href='/manifest.json' />
           <meta name='Description' content={packageJson.description} />
           <HeadLink rel='apple-touch-icon' href='/public/favicon/apple-icon.png' />
         </Head>

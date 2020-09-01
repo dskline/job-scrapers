@@ -4,6 +4,5 @@ declare type Config = {
     gqlWebSocketEndpoint: string,
     serverEndpoint: string
   },
-  private: {
-  }
-}
+  private: {}
+};
