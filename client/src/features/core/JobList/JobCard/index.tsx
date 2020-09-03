@@ -16,7 +16,7 @@ const JobCard: FC<JobCardProps> = ({ job }) => {
   const dispatch = useAppDispatch()
 
   return (
-    <div className='border border-gray-400 bg-gray-100 rounded-b mt-3 p-4 pb-8 flex flex-col justify-between leading-normal'>
+    <div className='border border-gray-400 shadow-md bg-gray-100 rounded mt-3 p-4 pb-8 flex flex-col justify-between leading-normal'>
       <div className='flex'>
         <div className='flex-grow overflow-hidden'>
           <a

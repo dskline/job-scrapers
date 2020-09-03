@@ -14,7 +14,7 @@ function SortedJobList (): React.ReactElement {
       {sortedScraperKeys.map((scraper) => (
         <div key={`scraperJobs${scraper}`} id={scraper} className='mb-12'>
           <a href={`#${scraper}`}>
-            <h2 className='border rounded-lg py-2 px-4 bg-indigo-500 text-indigo-100 text-xl capitalize italic'>
+            <h2 className='border rounded-lg shadow-lg py-2 px-4 bg-indigo-500 text-indigo-100 text-xl capitalize italic'>
               # {scraper}
             </h2>
           </a>

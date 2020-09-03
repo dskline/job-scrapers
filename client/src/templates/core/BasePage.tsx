@@ -10,7 +10,7 @@ const BasePage: FC = ({ children }) => (
       <title>Daily Jobs</title>
     </Head>
     <Navbar />
-    <div className='bg-indigo-100 min-h-screen'>{children}</div>
+    <div className='bg-indigo-100 min-h-screen pt-16'>{children}</div>
   </ThemeProvider>
 )
 
