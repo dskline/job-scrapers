@@ -42,8 +42,5 @@ services:
     ports:
       - "3000:3000"
     restart: always
-    volumes:
-      - "./client:/usr/app/"
-      - "/usr/app/node_modules"
     working_dir: "/usr/app"
     command: "npm run start"
