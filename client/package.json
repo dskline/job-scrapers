@@ -17,7 +17,7 @@
     "@next/bundle-analyzer": "9.4.4",
     "@reduxjs/toolkit": "1.4.0",
     "classnames": "2.2.6",
-    "convict": "6.0.0",
+    "convict": "6.2.2",
     "graphql": "15.3.0",
     "graphql-request": "2.0.0",
     "heroicons": "0.3.7",
