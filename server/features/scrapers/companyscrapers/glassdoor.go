@@ -13,7 +13,7 @@ import (
 	"time"
 )
 
-var glassdoorRatingSelector = `.v2__EIReviewsRatingsStylesV2__ratingNum.v2__EIReviewsRatingsStylesV2__large`
+var glassdoorRatingSelector = `//div[@data-test="statsLink"]/div[1]`
 
 /**
  * Takes a company with a name and fetches the rest of the details
@@ -27,6 +27,10 @@ func ScrapeCompanyDetails(companyName string) model.Company {
 	db.Instance().FirstOrInit(&company, model.Company{
 		CompanyName: companyName,
 	})
+	if company.ID != 0 {
+		fmt.Println("Company already exists in database", company.CompanyName, company.Rating, company.Industry)
+		return company
+	}
 	googleUrl := `https://www.google.com/search?q=` + url.QueryEscape(companyName) + `&as_sitesearch=www.glassdoor.com%2FOverview&nfpr=1`
 	fmt.Println("Adding company:", companyName, "("+googleUrl+")")
 	chromedp.Run(ctx,
@@ -37,7 +41,7 @@ func ScrapeCompanyDetails(companyName string) model.Company {
 	chromedp.Run(ctx,
 		chromedp.Navigate(company.GlassdoorUrl),
 		chromedp.TextContent(glassdoorRatingSelector, &ratingString),
-		chromedp.TextContent(`//div[@class="infoEntity"][6]/span`, &company.Industry),
+		chromedp.TextContent(`//a[@data-test="employer-industry"]`, &company.Industry),
 		chromedp.Click(glassdoorRatingSelector),
 	)
 	ratingFloat, _ := strconv.ParseFloat(ratingString, 64)
@@ -50,7 +54,7 @@ func ScrapeCompanyDetails(companyName string) model.Company {
 			chromedp.OuterHTML(`#DesktopTrendChart svg`, &company.RatingHTML),
 		)
 	}
-	fmt.Println("Found:", company.CompanyName, "(", company.Rating, "),", company.Industry)
 	db.Instance().Save(&company)
+	fmt.Println("Persisted:", company.CompanyName, "(", company.Rating, "),", company.Industry)
 	return company
 }

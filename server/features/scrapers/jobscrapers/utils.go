@@ -36,8 +36,11 @@ func PageHasResults(config ScraperConfig) bool {
 	var message string
 	chromedp.Run(ctx,
 		chromedp.Navigate(config.StartUrl),
+		chromedp.WaitReady(config.HasResultsScraperConfig.Selector),
 		chromedp.TextContent(config.HasResultsScraperConfig.Selector, &message),
 	)
+	ctx.Done()
+
 	if strings.Contains(message, config.HasResultsScraperConfig.MessageSubstring) {
 		fmt.Println("Page displayed a no results message")
 		return false
@@ -69,6 +72,7 @@ func GetResults(config ScraperConfig) []model.Job {
 	var nodes []*cdp.Node
 	chromedp.Run(ctx,
 		chromedp.Navigate(config.StartUrl),
+		chromedp.WaitReady(config.GetResultsScraperConfig.Selector, queryOption),
 		chromedp.Nodes(config.GetResultsScraperConfig.Selector, &nodes, queryOption),
 	)
 	fmt.Println(len(nodes), "results found")
@@ -77,5 +81,7 @@ func GetResults(config ScraperConfig) []model.Job {
 		fmt.Println(job.Title, "|", job.Company.CompanyName, "|", job.Url)
 		jobs = append(jobs, job)
 	}
+	ctx.Done()
+
 	return jobs
 }

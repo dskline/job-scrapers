@@ -18,23 +18,34 @@ func (scraper ScraperMonster) Name() enum.ScraperName {
 }
 
 func (scraper ScraperMonster) Scrape(options ScraperOptions) []model.Job {
-	var searchFormatter = strings.NewReplacer(" ", "-", ",", "__2C")
+	var searchFormatter = strings.NewReplacer(" ", "+", ",", "__2C")
+	var location = ``
+	if options.Location != `` {
+		location = `&where=` + searchFormatter.Replace(options.Location) + `&rd=10`
+	}
+	var recency = ``
+	if options.DaysSincePost == 1 {
+		recency = `&recency=today`
+	}
+
 	config := ScraperConfig{
-		StartUrl: `https://www.monster.com/jobs/search/?q=` + searchFormatter.Replace(options.Search) + `&intcid=skr_navigation_nhpso_searchMain&where=` + searchFormatter.Replace(options.Location) + `&rad=10&tm=` + fmt.Sprint(options.DaysSincePost),
+		StartUrl: `https://www.monster.com/jobs/search/?q=` + searchFormatter.Replace(options.Search) + location + recency,
 		HasResultsScraperConfig: HasResultsScraperConfig{
-			Selector:         ".navigation-content .title h1",
-			MessageSubstring: "we didn't find any jobs matching your criteria",
+			Selector:         `h3[data-testid="messageTitle"]`,
+			MessageSubstring: "Sorry, no jobs found for that search",
 		},
 		GetResultsScraperConfig: GetResultsScraperConfig{
-			Selector: `#SearchResults section.card-content[data-jobid]`,
+			Selector: `.infinite-scroll-component > div > div[tabindex="0"]`,
 			ResultHandler: func(ctx context.Context, xpath string) model.Job {
 				var job model.Job
 				chromedp.Run(ctx,
-					chromedp.TextContent(xpath+`//header//a`, &job.Title),
-					chromedp.AttributeValue(xpath+`//header//a`, `href`, &job.Url, nil),
-					chromedp.TextContent(xpath+`//div[@class="company"]/span[@class="name"]`, &job.Company.CompanyName),
+					chromedp.TextContent(xpath+`/a//div[@data-testid="svx_jobCard-title"]`, &job.Title),
+					chromedp.AttributeValue(xpath+`/a`, `href`, &job.Url, nil),
+					chromedp.TextContent(xpath+`/a//h3[@data-testid="svx_jobCard-company"]`, &job.Company.CompanyName),
 				)
 				job.Title = strings.TrimSpace(job.Title)
+				job.Url = `https://` + job.Url[2:] // remove the leading "//"
+				fmt.Println(job.Url)
 
 				/**
 				 * Fetch job description from the next page
@@ -44,9 +55,11 @@ func (scraper ScraperMonster) Scrape(options ScraperOptions) []model.Job {
 				defer cancel()
 				chromedp.Run(ctx2,
 					chromedp.Navigate(job.Url),
-					chromedp.TextContent(`.job-description`, &job.Description),
-					chromedp.InnerHTML(`.job-description`, &job.DescriptionHTML),
+					chromedp.TextContent(`//div[contains(@class, "descriptionstyles__DescriptionContainer")]`, &job.Description),
+					chromedp.InnerHTML(`//div[contains(@class, "descriptionstyles__DescriptionContainer")]`, &job.DescriptionHTML),
 				)
+				ctx2.Done()
+
 				return job
 			},
 		},
