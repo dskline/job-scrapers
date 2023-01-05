@@ -19,18 +19,19 @@ func (scraper ScraperIndeed) Name() enum.ScraperName {
 func (scraper ScraperIndeed) Scrape(options ScraperOptions) []model.Job {
 	var searchFormatter = strings.NewReplacer(" ", "%20")
 	config := ScraperConfig{
-		StartUrl: `https://www.indeed.com/jobs?q=` + searchFormatter.Replace(options.Search) + `&l=` + searchFormatter.Replace(options.Location) + `&radius=10&fromage=` + fmt.Sprint(options.DaysSincePost),
+		IsGUIRequired: true,
+		StartUrl:      `https://www.indeed.com/jobs?q=` + searchFormatter.Replace(options.Search) + `&l=` + searchFormatter.Replace(options.Location) + `&radius=10&fromage=` + fmt.Sprint(options.DaysSincePost),
 		GetResultsScraperConfig: GetResultsScraperConfig{
-			Selector: `#resultsCol .row.result`,
+			Selector: `.resultContent`,
 			ResultHandler: func(ctx context.Context, xpath string) model.Job {
 				var job model.Job
 				chromedp.Run(ctx,
-					chromedp.TextContent(xpath+`/h2[@class="title"]/a`, &job.Title),
-					chromedp.AttributeValue(xpath+`/h2[@class="title"]/a`, `href`, &job.Url, nil),
-					chromedp.TextContent(xpath+`//span[@class="company"]`, &job.Company.CompanyName),
+					chromedp.TextContent(xpath+`//h2[contains(@class, "jobTitle")]/a`, &job.Title),
+					chromedp.AttributeValue(xpath+`//h2[contains(@class, "jobTitle")]/a`, `href`, &job.Url, nil),
+					chromedp.TextContent(xpath+`//span[contains(@class, "companyName")]`, &job.Company.CompanyName),
 					chromedp.Click(xpath),
-					chromedp.TextContent(`#vjs-desc`, &job.Description),
-					chromedp.OuterHTML(`#vjs-desc`, &job.DescriptionHTML),
+					chromedp.TextContent(`#jobDescriptionText`, &job.Description),
+					chromedp.OuterHTML(`#jobDescriptionText`, &job.DescriptionHTML),
 				)
 				job.Title = strings.TrimSpace(job.Title)
 				job.Company.CompanyName = strings.TrimSpace(job.Company.CompanyName)
