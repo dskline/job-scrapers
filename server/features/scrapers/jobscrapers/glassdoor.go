@@ -22,24 +22,23 @@ func (scraper ScraperGlassdoorJobs) Scrape(options ScraperOptions) []model.Job {
 	config := ScraperConfig{
 		StartUrl: startUrl + `radius=10&minRating=3.5&fromAge=` + fmt.Sprint(options.DaysSincePost),
 		HasResultsScraperConfig: HasResultsScraperConfig{
-			Selector:         ".noResults",
-			MessageSubstring: "does not match any open jobs",
+			Selector:         "div[@data-test='zero-results-page']",
+			MessageSubstring: "No results",
 		},
 		GetResultsScraperConfig: GetResultsScraperConfig{
-			Selector: "#JobResults .jobContainer",
+			Selector: `//li[contains(@class, "react-job-listing")]/div[2]`,
 			ResultHandler: func(ctx context.Context, xpath string) model.Job {
 				var job model.Job
 				chromedp.Run(ctx,
-					// Yes, the class is misspelled :-)
-					chromedp.TextContent(xpath+`//div[contains(@class, "jobEmpolyerName")]`, &job.Company.CompanyName),
-					chromedp.AttributeValue(xpath+`//div[contains(@class, "jobHeader")]/a`, `href`, &job.Url, nil),
-					chromedp.TextContent(xpath+`/a[contains(@class, "jobTitle")]`, &job.Title),
+					chromedp.TextContent(xpath+`/div[1]/a`, &job.Company.CompanyName),
+					chromedp.AttributeValue(xpath+`/a`, `href`, &job.Url, nil),
+					chromedp.TextContent(xpath+`/a`, &job.Title),
 					chromedp.Click(xpath),
-					chromedp.TextContent("#Details .jobDescriptionContent", &job.Description),
-					chromedp.OuterHTML("#Details .jobDescriptionContent", &job.DescriptionHTML),
+					chromedp.TextContent(".jobDescriptionContent", &job.Description),
+					chromedp.OuterHTML(".jobDescriptionContent", &job.DescriptionHTML),
 				)
 				if job.Url[0] == '/' {
-				    job.Url = "https://www.glassdoor.com" + job.Url
+					job.Url = "https://www.glassdoor.com" + job.Url
 				}
 				return job
 			},
