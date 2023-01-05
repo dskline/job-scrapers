@@ -7,7 +7,6 @@ import (
 	"github.com/dskline/jobsearch/features/db/enum"
 	"github.com/dskline/jobsearch/features/db/model"
 	"strings"
-	"time"
 )
 
 type ScraperJoblift struct {
@@ -24,34 +23,26 @@ func (scraper ScraperJoblift) Scrape(options ScraperOptions) []model.Job {
 		timeQuery = "-the-last-" + fmt.Sprint(options.DaysSincePost) + "-days"
 	}
 	config := ScraperConfig{
+		//IsGUIRequired: true,
 		StartUrl: `https://joblift.com/Jobs-within-` + searchFormatter.Replace(options.Location) + `-for-` + searchFormatter.Replace(options.Search) + timeQuery + `-without-perimeter`,
-		HasResultsScraperConfig: HasResultsScraperConfig{
-			Selector:         ".noResultsHint",
-			MessageSubstring: "We couldn't find anything",
-		},
+		//HasResultsScraperConfig: HasResultsScraperConfig{
+		//	Selector:         ".noResultsHint",
+		//	MessageSubstring: "We couldn't find anything",
+		//},
 		GetResultsScraperConfig: GetResultsScraperConfig{
-			Selector: `//div[@class="searchresult__resultlist"]/div[following-sibling::div[@class="divider"]]`,
+			Selector: `//div[@data-testid="jobItem"]//a[contains(@class, "jobLink")]`,
 			ResultHandler: func(ctx context.Context, xpath string) model.Job {
 				var job model.Job
 				chromedp.Run(ctx,
-					chromedp.TextContent(xpath+`//a[@data-testid="jobTitleLink"]`, &job.Title),
-					chromedp.AttributeValue(xpath+`//a[@data-testid="jobTitleLink"]`, `href`, &job.Url, nil),
-					chromedp.TextContent(xpath+`//div[@class="job__infos"]/span[1]`, &job.Company.CompanyName),
+					chromedp.TextContent(xpath+`//div[@data-testid="jobTitleLink"]`, &job.Title),
+					chromedp.AttributeValue(xpath, `href`, &job.Url, nil),
+					chromedp.TextContent(xpath+`//div[@data-testid="jobItemCompany"]`, &job.Company.CompanyName),
+					chromedp.Click(xpath),
+					chromedp.TextContent(`//div[@class="dscr-details"]`, &job.Description),
+					chromedp.InnerHTML(`//div[@class="dscr-details"]`, &job.DescriptionHTML),
 				)
-				job.Url = "https://joblift.com" + job.Url
+				job.Url = "https://joblift.com" + strings.Replace(job.Url, " ", "%20", -1)
 				job.Title = strings.TrimSpace(job.Title)
-
-				/**
-				 * Fetch job description from the next page
-				 */
-				ctx2, cancel := chromedp.NewContext(context.Background())
-				ctx2, cancel = context.WithTimeout(ctx2, 10*time.Second)
-				defer cancel()
-				chromedp.Run(ctx2,
-					chromedp.Navigate(job.Url),
-					chromedp.TextContent(`.dscr-details`, &job.Description),
-					chromedp.InnerHTML(`.dscr-details`, &job.DescriptionHTML),
-				)
 				return job
 			},
 		},
