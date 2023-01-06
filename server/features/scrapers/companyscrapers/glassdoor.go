@@ -42,19 +42,21 @@ func ScrapeCompanyDetails(companyName string) model.Company {
 		chromedp.Navigate(company.GlassdoorUrl),
 		chromedp.TextContent(glassdoorRatingSelector, &ratingString),
 		chromedp.TextContent(`//a[@data-test="employer-industry"]`, &company.Industry),
-		chromedp.Click(glassdoorRatingSelector),
 	)
 	ratingFloat, _ := strconv.ParseFloat(ratingString, 64)
 	company.Rating = math.Round(ratingFloat*100) / 100
 
 	company.Industry = strings.TrimSpace(company.Industry)
 	if company.Industry != "Staffing & Outsourcing" {
-		time.Sleep(5 * time.Second)
 		chromedp.Run(ctx,
-			chromedp.OuterHTML(`#DesktopTrendChart svg`, &company.RatingHTML),
+			chromedp.Click(`//div[@data-test="statsLink"]/div[2]`),
+			chromedp.WaitReady(`//div[@id="DesktopTrendChart"]//div`),
+			chromedp.InnerHTML(`//div[@id="DesktopTrendChart"]//div`, &company.RatingHTML),
 		)
 	}
-	db.Instance().Save(&company)
-	fmt.Println("Persisted:", company.CompanyName, "(", company.Rating, "),", company.Industry)
+	if company.RatingHTML != "" {
+		db.Instance().Save(&company)
+		fmt.Println("Persisted:", company.CompanyName, "(", company.Rating, "),", company.Industry)
+	}
 	return company
 }
