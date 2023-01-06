@@ -23,12 +23,7 @@ func (scraper ScraperJoblift) Scrape(options ScraperOptions) []model.Job {
 		timeQuery = "-the-last-" + fmt.Sprint(options.DaysSincePost) + "-days"
 	}
 	config := ScraperConfig{
-		//IsGUIRequired: true,
 		StartUrl: `https://joblift.com/Jobs-within-` + searchFormatter.Replace(options.Location) + `-for-` + searchFormatter.Replace(options.Search) + timeQuery + `-without-perimeter`,
-		//HasResultsScraperConfig: HasResultsScraperConfig{
-		//	Selector:         ".noResultsHint",
-		//	MessageSubstring: "We couldn't find anything",
-		//},
 		GetResultsScraperConfig: GetResultsScraperConfig{
 			Selector: `//div[@data-testid="jobItem"]//a[contains(@class, "jobLink")]`,
 			ResultHandler: func(ctx context.Context, xpath string) model.Job {
