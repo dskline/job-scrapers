@@ -1,7 +1,7 @@
 package api
 
 import (
-	"github.com/dskline/jobsearch/features/scrapers/jobscrapers"
+	jobscrapers2 "github.com/dskline/jobsearch/features/jobs/jobscrapers"
 	"github.com/gin-gonic/gin"
 	"net/http"
 )
@@ -17,7 +17,7 @@ func scrapeJobs(c *gin.Context) {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 	}
-	jobscrapers.ScrapeJobs(jobscrapers.ScraperOptions{
+	jobscrapers2.ScrapeJobs(jobscrapers2.ScraperOptions{
 		Search:   body.Search,
 		Location: body.Location,
 	})

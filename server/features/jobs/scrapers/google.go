@@ -1,4 +1,4 @@
-package jobscrapers
+package scrapers
 
 import (
 	"context"

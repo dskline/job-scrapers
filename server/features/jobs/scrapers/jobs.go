@@ -1,11 +1,11 @@
-package jobscrapers
+package scrapers
 
 import (
 	"fmt"
+	"github.com/dskline/jobsearch/features/companies/scrapers"
 	"github.com/dskline/jobsearch/features/db"
 	"github.com/dskline/jobsearch/features/db/enum"
 	"github.com/dskline/jobsearch/features/db/model"
-	"github.com/dskline/jobsearch/features/scrapers/companyscrapers"
 )
 
 func ScrapeJobs(options ScraperOptions) {
@@ -36,7 +36,7 @@ func ScrapeJobs(options ScraperOptions) {
 			var persistedCompany model.Company
 			db.Instance().Where(&model.Company{CompanyName: job.Company.CompanyName}).First(&persistedCompany)
 			if persistedCompany.Industry == "" {
-				job.Company = companyscrapers.ScrapeCompanyDetails(job.Company.CompanyName)
+				job.Company = scrapers.ScrapeCompanyDetails(job.Company.CompanyName)
 			} else {
 				job.Company = persistedCompany
 			}

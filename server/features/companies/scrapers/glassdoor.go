@@ -1,4 +1,4 @@
-package companyscrapers
+package scrapers
 
 import (
 	"context"

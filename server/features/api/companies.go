@@ -1,10 +1,10 @@
 package api
 
 import (
+	"github.com/dskline/jobsearch/features/companies/scrapers"
 	"github.com/dskline/jobsearch/features/db"
 	"github.com/dskline/jobsearch/features/db/crud"
 	"github.com/dskline/jobsearch/features/db/model"
-	"github.com/dskline/jobsearch/features/scrapers/companyscrapers"
 	"github.com/gin-gonic/gin"
 	"net/http"
 )
@@ -13,7 +13,7 @@ func updateCompany(c *gin.Context) {
 	if company := crud.RetrieveById(c.Param("companyId")); company.ID == 0 {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "Company not found"})
 	} else {
-		companyscrapers.ScrapeCompanyDetails(company.CompanyName)
+		scrapers.ScrapeCompanyDetails(company.CompanyName)
 		c.JSON(http.StatusOK, gin.H{"message": "Company updated"})
 	}
 }
