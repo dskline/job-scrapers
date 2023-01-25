@@ -17,9 +17,16 @@ func (scraper ScraperGoogleJobs) Name() enum.ScraperName {
 
 func (scraper ScraperGoogleJobs) Scrape(options ScraperOptions) []model.Job {
 	var searchFormatter = strings.NewReplacer(" ", "+")
+
+	var locationParams = ""
+	if options.Location == "remote" {
+		locationParams = "&htiltype=1"
+	} else {
+		locationParams = "+" + searchFormatter.Replace(options.Location)
+	}
 	config := ScraperConfig{
 		IsGUIRequired: true,
-		StartUrl:      `https://www.google.com/search?q=` + searchFormatter.Replace(options.Search) + `+durham+nc&oq=google+jobs&ibp=htl;jobs&htivrt=jobs&sxsrf=ALeKk02PjNmmGZASJRmTOjwPSJmqtrOafg:1595424508251#fpstate=tldetail&htivrt=jobs&htichips=date_posted:today,city:8WYPEnHkrIl-8kaKidp64Q%3D%3D&htischips=date_posted;today,city;8WYPEnHkrIl-8kaKidp64Q%3D%3D:Durham_comma_%20NC`,
+		StartUrl:      `https://www.google.com/search?q=` + searchFormatter.Replace(options.Search) + locationParams + `&oq=google+jobs&ibp=htl;jobs&htivrt=jobs&sxsrf=ALeKk02PjNmmGZASJRmTOjwPSJmqtrOafg:1595424508251#fpstate=tldetail&htivrt=jobs&htischips=date_posted;today`,
 		GetResultsScraperConfig: GetResultsScraperConfig{
 			Selector: `//div[@role="treeitem"]/div/div`,
 			ResultHandler: func(ctx context.Context, xpath string) model.Job {

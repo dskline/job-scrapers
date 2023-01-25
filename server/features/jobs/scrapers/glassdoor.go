@@ -19,8 +19,15 @@ func (scraper ScraperGlassdoorJobs) Name() enum.ScraperName {
 
 func (scraper ScraperGlassdoorJobs) Scrape(options ScraperOptions) []model.Job {
 	startUrl := options.OverrideOpts[enum.Glassdoor].Url
+
+	var locationParam = ""
+	if options.Location == "remote" {
+		locationParam = "&remoteWorkType=1"
+	} else {
+		locationParam = "&radius=10"
+	}
 	config := ScraperConfig{
-		StartUrl: startUrl + `radius=10&minRating=3.5&fromAge=` + fmt.Sprint(options.DaysSincePost),
+		StartUrl: startUrl + `minRating=3.5&fromAge=` + fmt.Sprint(options.DaysSincePost) + locationParam,
 		HasResultsScraperConfig: HasResultsScraperConfig{
 			Selector:         "div[@data-test='zero-results-page']",
 			MessageSubstring: "No results",

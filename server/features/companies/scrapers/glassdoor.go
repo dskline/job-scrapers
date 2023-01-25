@@ -4,6 +4,7 @@ import (
 	"context"
 	"fmt"
 	"github.com/chromedp/chromedp"
+	"github.com/dskline/jobsearch/features/companies/filters"
 	"github.com/dskline/jobsearch/features/db"
 	"github.com/dskline/jobsearch/features/db/model"
 	"math"
@@ -47,7 +48,8 @@ func ScrapeCompanyDetails(companyName string) model.Company {
 	company.Rating = math.Round(ratingFloat*100) / 100
 
 	company.Industry = strings.TrimSpace(company.Industry)
-	if company.Industry != "Staffing & Outsourcing" {
+	if !filters.GetFilteredIndustries()[company.Industry] {
+		time.Sleep(5 * time.Second)
 		chromedp.Run(ctx,
 			chromedp.Click(`//div[@data-test="statsLink"]/div[2]`),
 			chromedp.WaitReady(`//div[@id="DesktopTrendChart"]//div`),
