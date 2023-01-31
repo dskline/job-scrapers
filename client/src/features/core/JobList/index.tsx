@@ -14,20 +14,20 @@ function JobList (): React.ReactElement {
   const dispatch = useAppDispatch()
 
   return (
-    <div className='pt-8 px-4 flex flex-col md:mx-auto md:w-3/4 lg:w-5/6 lg:flex-row xl:w-3/4'>
-      <div className='mb-8 lg:w-96'>
-        <div className='lg:fixed lg:w-96'>
+    <>
+      <div className='pt-8 px-4 flex flex-col md:mx-auto md:w-3/4 lg:w-5/6 lg:flex-row xl:w-3/4'>
+        <div className='mb-8'>
           <ScraperStats />
         </div>
-      </div>
-      <div className='lg:flex-grow lg:pl-16'>
-        {!isLoading && jobs.length === 0 ? (
-          <div className='bg-white h-64 pt-8 text-center rounded text-xl'>
-            No jobs found today, try again tomorrow.
-          </div>
-        ) : (
-          <SortedJobList />
-        )}
+        <div className='lg:flex-grow lg:pl-16'>
+          {!isLoading && jobs.length === 0 ? (
+            <div className='bg-white h-64 pt-8 text-center rounded text-xl'>
+              No jobs found today, try again tomorrow.
+            </div>
+          ) : (
+            <SortedJobList />
+          )}
+        </div>
       </div>
       {jobMenuOpened && (
         <button
@@ -36,7 +36,7 @@ function JobList (): React.ReactElement {
         />
       )}
       {companyStagedForIgnore && <IgnoreCompanyModal />}
-    </div>
+    </>
   )
 }
 

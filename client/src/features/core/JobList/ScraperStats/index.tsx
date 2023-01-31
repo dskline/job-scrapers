@@ -12,7 +12,7 @@ function ScraperStats (): React.ReactElement {
     categorizedJobs: jobsByScrapers,
   } = useSelector((state: RootState) => state.jobList)
   return (
-    <>
+    <div>
       <DateNavigator />
       {!isLoading && jobs.length > 0 && (
         <>
@@ -20,52 +20,40 @@ function ScraperStats (): React.ReactElement {
             ({jobs.length} jobs)
           </div>
           <div className='mt-8 mb-2 font-bold'>Scrapers</div>
-          <div className='flex w-11/12'>
-            <div className='inline-flex flex-col pr-2'>
-              {sortedScraperKeysByNumberOfJobs.map((scraper) => (
-                <a
-                  key={`scraperLabel${scraper}`}
-                  href={`#${scraper}`}
-                  className='h-8 flex content-center'
-                >
-                  <div className='my-auto'>{scraper}</div>
-                </a>
-              ))}
-            </div>
-            <div className='inline-flex flex-col flex-grow max-w-xs md:max-w-md w-11/12'>
-              {sortedScraperKeysByNumberOfJobs.map((scraper) => {
-                const percentageOfLargest =
-                  jobsByScrapers[scraper].length /
-                  jobsByScrapers[sortedScraperKeysByNumberOfJobs[0]].length
-                return (
-                  <a
-                    key={`scraperBar${scraper}`}
-                    href={`#${scraper}`}
-                    className='h-8 flex content-center'
-                  >
-                    <div
-                      className={`px-3 my-auto rounded-lg h-5 ${
-                        percentageOfLargest < 0.3
-                          ? 'bg-red-400'
-                          : percentageOfLargest < 0.7
+          {sortedScraperKeysByNumberOfJobs.map((scraper) => {
+            const percentageOfLargest =
+              jobsByScrapers[scraper].length /
+              jobsByScrapers[sortedScraperKeysByNumberOfJobs[0]].length
+
+            return (
+              <a
+                key={scraper}
+                href={`#${scraper}`}
+              >
+                <div className='mt-2 col-span-2 text-sm'>{scraper}</div>
+                <div className='flex items-center'>
+                  <div
+                    className={`px-3 rounded-lg h-3 ${
+                      percentageOfLargest < 0.3
+                        ? 'bg-red-400'
+                        : percentageOfLargest < 0.7
                           ? 'bg-yellow-500'
                           : 'bg-green-500'
-                      }`}
-                      style={{
-                        minWidth: `${percentageOfLargest * 100}%`,
-                      }}
-                    />
-                    <span className='ml-3 float-right my-auto'>
-                      {jobsByScrapers[scraper].length}
-                    </span>
-                  </a>
-                )
-              })}
-            </div>
-          </div>
+                    }`}
+                    style={{
+                      width: `${percentageOfLargest * 100}%`,
+                    }}
+                  />
+                  <span className='ml-3'>
+                    {jobsByScrapers[scraper].length}
+                  </span>
+                </div>
+              </a>
+            )
+          })}
         </>
       )}
-    </>
+    </div>
   )
 }
 
