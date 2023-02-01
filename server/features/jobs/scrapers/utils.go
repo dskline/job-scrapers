@@ -5,7 +5,11 @@ import (
 	"fmt"
 	"github.com/chromedp/cdproto/cdp"
 	"github.com/chromedp/chromedp"
+	"github.com/dskline/jobsearch/features/companies/scrapers"
+	"github.com/dskline/jobsearch/features/db"
+	"github.com/dskline/jobsearch/features/db/crud"
 	"github.com/dskline/jobsearch/features/db/model"
+	"github.com/dskline/jobsearch/features/jobs/filters"
 	"strings"
 	"time"
 )
@@ -82,6 +86,35 @@ func GetResults(config ScraperConfig) []model.Job {
 		jobs = append(jobs, job)
 	}
 	ctx.Done()
+
+	var companyNames = make([]string, 0)
+	for _, job := range jobs {
+		companyNames = append(companyNames, job.Company.CompanyName)
+	}
+	var companies = crud.RetrieveByCompanyNames(companyNames)
+
+	// filter jobs by description
+	jobs = filters.FilterByKeywordScore{}.Filter(jobs)
+
+	// if the description is acceptable, get more details about the company
+	for i, job := range jobs {
+		var persistedCompany = companies[job.Company.CompanyName]
+		if persistedCompany.Industry == "" {
+			jobs[i].Company = scrapers.ScrapeCompanyDetails(job.Company.CompanyName)
+			companies[jobs[i].Company.CompanyName] = jobs[i].Company
+		} else {
+			jobs[i].Company = persistedCompany
+		}
+	}
+	jobs = filters.FilterByIndustry{}.Filter(jobs)
+
+	// register the event
+	var scraperEvent = model.ScraperEvent{
+		Url:          config.StartUrl,
+		JobsFound:    len(nodes),
+		JobsFiltered: len(nodes) - len(jobs),
+	}
+	db.Instance().Create(&scraperEvent)
 
 	return jobs
 }
