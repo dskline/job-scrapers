@@ -37,3 +37,16 @@ Data is stored in Postgres and retrieved with GraphQL APIs using Hasura.
 #### Web App
 
 Data is viewed through a web app written in NextJS (SSR) and Tailwind (CSS).
+
+## Contributing
+
+### Pre-requisites
+
+* Install Docker
+  - Copy .env.example files in the root directory and in the server directory to .env files and update as necessary
+  - Make sure the postgres volume exists on your machine, and has the correct permissions (sudo chmod -R +rwX 
+    /Volumes/Docker/postgres)
+* NPM
+* Install Go (brew install go)
+  - Run the server with `go run main.go` in the server directory
+* Install Google Chrome (required for scraping)
