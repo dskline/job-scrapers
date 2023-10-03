@@ -2,13 +2,13 @@ package scrapers
 
 import (
 	"context"
-	"fmt"
 	"github.com/chromedp/cdproto/cdp"
 	"github.com/chromedp/chromedp"
 	"github.com/dskline/jobsearch/features/companies/scrapers"
 	"github.com/dskline/jobsearch/features/db"
 	"github.com/dskline/jobsearch/features/db/crud"
 	"github.com/dskline/jobsearch/features/db/model"
+	"github.com/dskline/jobsearch/features/debug/log"
 	"github.com/dskline/jobsearch/features/jobs/filters"
 	"strings"
 	"time"
@@ -46,14 +46,14 @@ func PageHasResults(config ScraperConfig) bool {
 	ctx.Done()
 
 	if strings.Contains(message, config.HasResultsScraperConfig.MessageSubstring) {
-		fmt.Println("Page displayed a no results message")
+		log.Info("Page displayed a no results message. Skipping...")
 		return false
 	}
 	return true
 }
 
 func GetResults(config ScraperConfig) []model.Job {
-	fmt.Println(config.StartUrl)
+	log.Info("Scraping %s", config.StartUrl)
 	var jobs []model.Job
 
 	if !PageHasResults(config) {
@@ -79,10 +79,11 @@ func GetResults(config ScraperConfig) []model.Job {
 		chromedp.WaitReady(config.GetResultsScraperConfig.Selector, queryOption),
 		chromedp.Nodes(config.GetResultsScraperConfig.Selector, &nodes, queryOption),
 	)
-	fmt.Println(len(nodes), "results found")
-	for _, n := range nodes {
+	log.Info("Found %d results", len(nodes))
+	for i, n := range nodes {
 		job := config.GetResultsScraperConfig.ResultHandler(ctx, n.FullXPathByID())
-		fmt.Println(job.Title, "|", job.Company.CompanyName, "|", job.Url)
+		log.Info("[%d] %s: %s", i+1, job.Company.CompanyName, job.Title)
+		log.Debug("%s", job.Url)
 		jobs = append(jobs, job)
 	}
 	ctx.Done()

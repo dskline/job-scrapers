@@ -2,7 +2,6 @@ package scrapers
 
 import (
 	"context"
-	"fmt"
 	"github.com/chromedp/chromedp"
 	"github.com/dskline/jobsearch/features/db/enum"
 	"github.com/dskline/jobsearch/features/db/model"
@@ -45,7 +44,6 @@ func (scraper ScraperMonster) Scrape(options ScraperOptions) []model.Job {
 				)
 				job.Title = strings.TrimSpace(job.Title)
 				job.Url = `https://` + job.Url[2:] // remove the leading "//"
-				fmt.Println(job.Url)
 
 				/**
 				 * Fetch job description from the next page

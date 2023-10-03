@@ -6,8 +6,6 @@ import (
 	"github.com/chromedp/chromedp"
 	"github.com/dskline/jobsearch/features/db/enum"
 	"github.com/dskline/jobsearch/features/db/model"
-	"strings"
-	"time"
 )
 
 type ScraperGlassdoorJobs struct {
@@ -52,25 +50,4 @@ func (scraper ScraperGlassdoorJobs) Scrape(options ScraperOptions) []model.Job {
 		},
 	}
 	return GetResults(config)
-}
-
-func GetGlassdoorRedirectUrl(options ScraperOptions) string {
-	fmt.Println("Retrieving Glassdoor Redirect URL")
-	ctx, cancel := chromedp.NewExecAllocator(context.Background(), disableHeadlessOpts...)
-	ctx, cancel = chromedp.NewContext(ctx)
-	ctx, cancel = context.WithTimeout(ctx, 30*time.Second)
-	defer cancel()
-
-	var searchFormatter = strings.NewReplacer(" ", "+")
-	startUrl := `https://www.glassdoor.com/Job/jobs.htm?sc.keyword=` + searchFormatter.Replace(options.Search) + `&fromAge=` + fmt.Sprint(options.DaysSincePost) + `&radius=10&minRating=3.5`
-	fmt.Println(startUrl)
-	chromedp.Run(ctx,
-		chromedp.Navigate(startUrl),
-		chromedp.SendKeys(`input[id="sc.location"]`, options.Location),
-		chromedp.Click(`#HeroSearchButton`),
-		chromedp.Sleep(5*time.Second),
-		chromedp.Location(&startUrl),
-	)
-	startUrl += "&"
-	return startUrl
 }

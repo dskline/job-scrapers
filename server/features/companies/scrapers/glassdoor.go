@@ -2,11 +2,11 @@ package scrapers
 
 import (
 	"context"
-	"fmt"
 	"github.com/chromedp/chromedp"
 	"github.com/dskline/jobsearch/features/companies/filters"
 	"github.com/dskline/jobsearch/features/db"
 	"github.com/dskline/jobsearch/features/db/model"
+	"github.com/dskline/jobsearch/features/debug/log"
 	"math"
 	"net/url"
 	"strconv"
@@ -29,11 +29,11 @@ func ScrapeCompanyDetails(companyName string) model.Company {
 		CompanyName: companyName,
 	})
 	if company.ID != 0 {
-		fmt.Println("Company already exists in database", company.CompanyName, company.Rating, company.Industry)
+		log.Debug("'%s' already exists in database", company.CompanyName)
 		return company
 	}
 	googleUrl := `https://www.google.com/search?q=` + url.QueryEscape(companyName) + `&as_sitesearch=www.glassdoor.com%2FOverview&nfpr=1`
-	fmt.Println("Adding company:", companyName, "("+googleUrl+")")
+	log.Info("Adding company: %s (%s)", companyName, googleUrl)
 	chromedp.Run(ctx,
 		chromedp.Navigate(googleUrl),
 		chromedp.AttributeValue(`//div[@id="search"]//a[contains(@href, "glassdoor.com/Overview")]`, `href`, &company.GlassdoorUrl, nil),
@@ -58,7 +58,7 @@ func ScrapeCompanyDetails(companyName string) model.Company {
 	}
 	if company.RatingHTML != "" {
 		db.Instance().Save(&company)
-		fmt.Println("Persisted:", company.CompanyName, "(", company.Rating, "),", company.Industry)
+		log.Info("Persisted: %s | %s | %f", company.CompanyName, company.Industry, company.Rating)
 	}
 	return company
 }

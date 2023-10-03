@@ -1,11 +1,11 @@
 package scrapers
 
 import (
-	"fmt"
 	"github.com/dskline/jobsearch/features/companies/scrapers"
 	"github.com/dskline/jobsearch/features/db"
 	"github.com/dskline/jobsearch/features/db/crud"
 	"github.com/dskline/jobsearch/features/db/enum"
+	"github.com/dskline/jobsearch/features/debug/log"
 	"github.com/dskline/jobsearch/features/jobs/filters"
 )
 
@@ -14,11 +14,11 @@ func ScrapeJobs(options ScraperOptions) {
 		options.Scrapers = []JobScraper{
 			//ScraperFindJobs{}, Finds too many unrelated matches
 			ScraperGlassdoorJobs{},
-			ScraperGoogleJobs{},
-			ScraperIndeed{},
-			ScraperJoblift{},
-			ScraperMonster{},
-			ScraperZipRecruiter{},
+			//ScraperGoogleJobs{},
+			//ScraperIndeed{},
+			//ScraperJoblift{},
+			//ScraperMonster{},
+			//ScraperZipRecruiter{},
 		}
 	}
 	if options.OverrideOpts == nil {
@@ -32,7 +32,7 @@ func ScrapeJobs(options ScraperOptions) {
 		options.DaysSincePost = 1
 	}
 	for _, scraper := range options.Scrapers {
-		fmt.Println("Starting scraper:", scraper.Name())
+		log.Info("Starting scraper: %s", scraper.Name())
 		var jobs = scraper.Scrape(options)
 
 		var companyNames = make([]string, 0)

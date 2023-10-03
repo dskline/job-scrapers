@@ -1,8 +1,8 @@
 package filters
 
 import (
-	"fmt"
 	"github.com/dskline/jobsearch/features/db/model"
+	"github.com/dskline/jobsearch/features/debug/log"
 )
 
 type Filter interface {
@@ -18,7 +18,7 @@ func RunFilters(jobs []model.Job) []model.Job {
 	for _, filter := range filters {
 		var lenBefore = len(jobs)
 		jobs = filter.Filter(jobs)
-		fmt.Println("Filtered", lenBefore-len(jobs), "jobs with", filter.Name())
+		log.Info("Filtered %d jobs with %s", lenBefore-len(jobs), filter.Name())
 	}
 	return jobs
 }
